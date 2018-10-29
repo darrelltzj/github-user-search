@@ -12,15 +12,15 @@ export function searchUsersAction(q = '') {
     try {
       await dispatch({ type: USERS_LOADING });
 
-      const response = await axios({
+      const res = await axios({
         url: 'https://api.github.com/search/users',
         method: 'GET',
         params: { q, in: 'login' },
-      }).then(res => res.data);
+      }).then(response => response.data);
 
-      await dispatch({ type: USERS_SEARCHED, response });
+      await dispatch({ type: USERS_SEARCHED, data: res.items });
 
-      return response;
+      return res;
     } catch (error) {
       dispatch({ type: USERS_FAILED, error });
 
@@ -34,14 +34,14 @@ export function searchUserAction(username) {
     try {
       await dispatch({ type: USERS_LOADING });
 
-      const response = await axios({
+      const res = await axios({
         url: `https://api.github.com/search/users/${username}`,
         method: 'GET',
-      }).then(res => res.data);
+      }).then(response => response.data);
 
-      await dispatch({ type: USER_SEARCHED, response });
+      await dispatch({ type: USER_SEARCHED, data: res });
 
-      return response;
+      return res;
     } catch (error) {
       dispatch({ type: USERS_FAILED, error });
 

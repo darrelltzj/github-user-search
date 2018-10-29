@@ -15,7 +15,7 @@ const store = configureStore();
 export default function () {
   return (
     <Main>
-      <header><h1>Github Search</h1></header>
+      <header><h1>Github Users</h1></header>
       <Provider store={store}>
         <Router>
           <Switch>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -28,7 +29,7 @@ class Home extends Component {
 
   render() {
     const { q } = this.state;
-    const { users: { loading } = {} } = this.props;
+    const { users: { loading, data } = {} } = this.props;
     return (
       <Loader
         loading={loading && true}
@@ -39,6 +40,7 @@ class Home extends Component {
             <Col xs={10}>
               <Input
                 value={q}
+                placeholder="Username"
                 onChange={e => this.handleChange(e.target.value)}
               />
             </Col>
@@ -49,6 +51,20 @@ class Home extends Component {
             </Col>
           </Row>
         </form>
+        <Row>
+          {data.map(user => (
+            <Link to={`/users/${user.login}`} key={user.id}>
+              <div style={{ width: 250, padding: 10, margin: 'auto' }}>
+                <img
+                  src={user.avatar_url}
+                  alt={user.login}
+                  style={{ width: '100%' }}
+                />
+                <p>{user.login}</p>
+              </div>
+            </Link>
+          ))}
+        </Row>
       </Loader>
     );
   }

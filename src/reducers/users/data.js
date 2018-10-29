@@ -8,9 +8,9 @@ const INITIAL_STATE = [];
 const data = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case USERS_SEARCHED:
-      return action.response;
+      return action.data;
     case USER_SEARCHED:
-      return [action.response];
+      return [action.data];
     default:
       return state;
   }
