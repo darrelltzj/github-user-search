@@ -7,6 +7,7 @@ import Row from '../components/layouts/Row';
 import Col from '../components/layouts/Col';
 import Input from '../components/forms/Input';
 import Button from '../components/forms/Button';
+import Loader from '../components/atoms/Loader';
 
 class Home extends Component {
   constructor(props) {
@@ -27,8 +28,12 @@ class Home extends Component {
 
   render() {
     const { q } = this.state;
+    const { users: { loading } = {} } = this.props;
     return (
-      <section>
+      <Loader
+        loading={loading && true}
+        message={loading}
+      >
         <form onSubmit={e => this.handleSubmit(e)}>
           <Row>
             <Col xs={10}>
@@ -44,7 +49,7 @@ class Home extends Component {
             </Col>
           </Row>
         </form>
-      </section>
+      </Loader>
     );
   }
 }
