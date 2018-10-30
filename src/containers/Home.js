@@ -47,58 +47,74 @@ class Home extends Component {
       } = {},
     } = this.props;
 
+    console.log(loading);
+
     return (
       <Loader
         loading={loading && true}
         message={loading}
       >
-        <form
-          onSubmit={e => this.handleSubmit(e)}
-          style={{ padding: 10 }}
+        <div
+          style={{
+            padding: 10,
+            minHeight: '80vh',
+          }}
         >
-          <Row>
-            <Col xs={10}>
-              <Input
-                value={q}
-                placeholder="Username"
-                onChange={e => this.handleChange(e.target.value)}
-              />
-            </Col>
-            <Col xs={2}>
-              <Button type="submit">
-                Search
-              </Button>
-            </Col>
-          </Row>
-        </form>
-        <Row>
-          {data.map(user => (
-            <Link to={`/users/${user.login}`} key={user.id}>
-              <div style={{ width: 250, padding: 10, margin: 'auto' }}>
-                <img
-                  src={user.avatar_url}
-                  alt={user.login}
-                  style={{ width: '100%', borderRadius: 8 }}
+          <form
+            onSubmit={e => this.handleSubmit(e)}
+            style={{
+              position: 'sticky',
+              top: 110,
+              zIndex: 5,
+            }}
+          >
+            <Row>
+              <Col xs={10}>
+                <Input
+                  value={q}
+                  placeholder="Username"
+                  onChange={e => this.handleChange(e.target.value)}
                 />
-                <p style={{
-                  textAlign: 'center',
-                  textDecoration: 'none',
-                  color: '#005cd0',
-                  fontSize: 20,
-                }}
-                >
-                  {user.login}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </Row>
-        <Pagination
-          page={page}
-          total={total}
-          perPage={30}
-          onChange={this.handlePagination}
-        />
+              </Col>
+              <Col xs={2}>
+                <Button type="submit">
+                  Search
+                </Button>
+              </Col>
+            </Row>
+          </form>
+
+          <div>
+            <Row>
+              {data.map(user => (
+                <Link to={`/users/${user.login}`} key={user.id}>
+                  <div style={{ width: 250, padding: 10, margin: 'auto' }}>
+                    <img
+                      src={user.avatar_url}
+                      alt={user.login}
+                      style={{ width: '100%', borderRadius: 8 }}
+                    />
+                    <p style={{
+                      textAlign: 'center',
+                      textDecoration: 'none',
+                      color: '#005cd0',
+                      fontSize: 20,
+                    }}
+                    >
+                      {user.login}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </Row>
+            <Pagination
+              page={page}
+              total={total}
+              perPage={30}
+              onChange={this.handlePagination}
+            />
+          </div>
+        </div>
       </Loader>
     );
   }

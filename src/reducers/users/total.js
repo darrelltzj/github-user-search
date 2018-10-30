@@ -8,7 +8,7 @@ const INITIAL_STATE = 0;
 const data = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case USERS_SEARCHED:
-      return action.total;
+      return +action.total;
     case USER_SEARCHED:
       return 1;
     default:

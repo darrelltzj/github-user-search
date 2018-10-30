@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import Spinner from './Spinner';
 
 const StyledLoading = styled.div`
-height: 100vh;
-width: 100vw;
+height: 100%;
+width: 100%;
 z-index: 1000;
 position: absolute;
 top: 0;
@@ -40,7 +40,7 @@ function Loading(props) {
 function Loader(props) {
   const { children, loading, message } = props;
   return (
-    <section>
+    <section style={{ position: 'relative' }}>
       {loading && <Loading message={message} />}
       {children}
     </section>

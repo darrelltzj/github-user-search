@@ -10,7 +10,10 @@ import {
 export function searchUsersAction({ q = '', page = 1 } = {}) {
   return async function search(dispatch) {
     try {
-      await dispatch({ type: USERS_LOADING });
+      await dispatch({
+        type: USERS_LOADING,
+        message: 'Searching...',
+      });
 
       const res = await axios({
         url: 'https://api.github.com/search/users',
