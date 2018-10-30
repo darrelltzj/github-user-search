@@ -17,6 +17,7 @@ class Home extends Component {
     this.state = { q: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePagination = this.handlePagination.bind(this);
   }
 
   handleChange(q) { this.setState({ q }); }
@@ -25,12 +26,27 @@ class Home extends Component {
     const { searchUsers } = this.props;
     const { q } = this.state;
     e.preventDefault();
-    searchUsers(q);
+    searchUsers({ q, page: 1 });
+  }
+
+  handlePagination(page) {
+    const { searchUsers } = this.props;
+    const { q } = this.state;
+    searchUsers({ q, page });
   }
 
   render() {
     const { q } = this.state;
-    const { users: { loading, data, page, total } = {} } = this.props;
+
+    const {
+      users: {
+        loading,
+        data,
+        page,
+        total,
+      } = {},
+    } = this.props;
+
     return (
       <Loader
         loading={loading && true}
@@ -80,7 +96,8 @@ class Home extends Component {
         <Pagination
           page={page}
           total={total}
-          perPage={100}
+          perPage={30}
+          onChange={this.handlePagination}
         />
       </Loader>
     );

@@ -7,7 +7,7 @@ import {
   USER_SEARCHED,
 } from '../reducers/types';
 
-export function searchUsersAction(q = '') {
+export function searchUsersAction({ q = '', page = 1 } = {}) {
   return async function search(dispatch) {
     try {
       await dispatch({ type: USERS_LOADING });
@@ -18,8 +18,9 @@ export function searchUsersAction(q = '') {
         params: {
           q,
           in: 'login',
-          page: 1,
-          per_page: 100,
+          type: 'user',
+          page,
+          per_page: 30,
         },
       }).then(response => response.data);
 
@@ -28,7 +29,7 @@ export function searchUsersAction(q = '') {
       await dispatch({
         type: USERS_SEARCHED,
         data: res.items,
-        page: 1,
+        page,
         total: res.total_count,
       });
 
