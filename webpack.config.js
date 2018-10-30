@@ -9,11 +9,15 @@ module.exports = {
   },
   module: {
     rules: [{
+      test: /\.css$/,
+      exclude: /node_modules/,
+      use: ['style-loader', 'css-loader'],
+    }, {
       test: /\.js$/,
       exclude: /node_modules/,
-      use: {
+      use: [{
         loader: 'babel-loader',
-      },
+      }],
     }],
   },
   plugins: [

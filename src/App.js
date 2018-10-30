@@ -6,6 +6,7 @@ import configureStore from './store';
 import Home from './containers/Home';
 import User from './containers/User';
 import Main from './components/layouts/Main';
+import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import A from './components/atoms/A';
 import Span from './components/atoms/Span';
@@ -15,7 +16,7 @@ const store = configureStore();
 export default function () {
   return (
     <Main>
-      <header><h1>Github Users</h1></header>
+      <Header><h1>Github Users</h1></Header>
       <Provider store={store}>
         <Router>
           <Switch>

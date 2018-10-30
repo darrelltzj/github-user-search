@@ -15,10 +15,22 @@ export function searchUsersAction(q = '') {
       const res = await axios({
         url: 'https://api.github.com/search/users',
         method: 'GET',
-        params: { q, in: 'login' },
+        params: {
+          q,
+          in: 'login',
+          page: 1,
+          per_page: 100,
+        },
       }).then(response => response.data);
 
-      await dispatch({ type: USERS_SEARCHED, data: res.items });
+      console.log('res', res);
+
+      await dispatch({
+        type: USERS_SEARCHED,
+        data: res.items,
+        page: 1,
+        total: res.total_count,
+      });
 
       return res;
     } catch (error) {

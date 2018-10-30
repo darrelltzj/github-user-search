@@ -9,6 +9,7 @@ import Col from '../components/layouts/Col';
 import Input from '../components/forms/Input';
 import Button from '../components/forms/Button';
 import Loader from '../components/atoms/Loader';
+import Pagination from '../components/pagination/Pagination';
 
 class Home extends Component {
   constructor(props) {
@@ -29,13 +30,16 @@ class Home extends Component {
 
   render() {
     const { q } = this.state;
-    const { users: { loading, data } = {} } = this.props;
+    const { users: { loading, data, page, total } = {} } = this.props;
     return (
       <Loader
         loading={loading && true}
         message={loading}
       >
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form
+          onSubmit={e => this.handleSubmit(e)}
+          style={{ padding: 10 }}
+        >
           <Row>
             <Col xs={10}>
               <Input
@@ -58,13 +62,26 @@ class Home extends Component {
                 <img
                   src={user.avatar_url}
                   alt={user.login}
-                  style={{ width: '100%' }}
+                  style={{ width: '100%', borderRadius: 8 }}
                 />
-                <p>{user.login}</p>
+                <p style={{
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                  color: '#005cd0',
+                  fontSize: 20,
+                }}
+                >
+                  {user.login}
+                </p>
               </div>
             </Link>
           ))}
         </Row>
+        <Pagination
+          page={page}
+          total={total}
+          perPage={100}
+        />
       </Loader>
     );
   }

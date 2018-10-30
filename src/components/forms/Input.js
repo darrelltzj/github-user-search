@@ -7,4 +7,5 @@ box-sizing: border-box;
 border: 1px solid grey;
 border-radius: 8px;
 font-size: 26px;
+padding: 10px;
 `;
