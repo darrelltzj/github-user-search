@@ -50,14 +50,20 @@ export function searchUserAction(username) {
     try {
       await dispatch({ type: USERS_LOADING });
 
-      const res = await axios({
-        url: `https://api.github.com/search/users/${username}`,
+      const data = await axios({
+        url: `https://api.github.com/users/${username}`,
         method: 'GET',
       }).then(response => response.data);
 
-      await dispatch({ type: USER_SEARCHED, data: res });
+      await dispatch({
+        type: USER_SEARCHED,
+        data,
+        repos: data.public_repos || 0,
+        followers: data.followers || 0,
+        following: data.following || 0,
+      });
 
-      return res;
+      return data;
     } catch (error) {
       dispatch({ type: USERS_FAILED, error });
 

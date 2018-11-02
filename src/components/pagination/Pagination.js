@@ -11,7 +11,7 @@ function Pagination(props) {
 
   const last = Math.min(
     Math.floor(1000 / perPage),
-    total >= perPage ? Math.floor(total / perPage) : 1,
+    total >= perPage ? Math.floor(total / perPage) + 1 : 1,
   );
 
   return (
