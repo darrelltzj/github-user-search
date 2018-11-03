@@ -107,8 +107,12 @@ class Home extends Component {
             </Row>
             <Pagination
               page={page}
-              total={total}
-              perPage={30}
+              last={(
+                Math.min(
+                  Math.floor(1000 / 30),
+                  total >= 30 ? Math.floor(total / 30) + 1 : 1,
+                )
+              )}
               onChange={this.handlePagination}
             />
           </div>

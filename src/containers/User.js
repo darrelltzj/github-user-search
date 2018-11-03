@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import styled from 'styled-components';
 
 import { searchUserAction } from '../actions/userActions';
-import searchRepoAction from '../actions/repositoryActions';
+import searchReposAction from '../actions/repositoryActions';
+import searchFollowersAction from '../actions/followerActions';
+import searchFollowingAction from '../actions/followingActions';
 import Row from '../components/layouts/Row';
 import Col from '../components/layouts/Col';
-import Pagination from '../components/pagination/Pagination';
-import ListRow from '../components/atoms/ListRow';
-import Span from '../components/atoms/Span';
 import TabToggle from './TabToggle';
+import RepoContent from './RepoContent';
+
+const StyledUserContainer = styled.section`
+padding: 10px 100px;
+@media (max-width: 992px) {
+  padding: 10px 0;
+}
+`;
 
 class User extends Component {
   constructor(props) {
     super(props);
-    this.state = { selected: 'repo' };
+    this.state = { selected: 'repos' };
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   async componentDidMount() {
@@ -27,12 +37,35 @@ class User extends Component {
     await searchRepo({ username, page: 1 });
   }
 
+  handleSelect(selected) {
+    const {
+      repos,
+      followers,
+      followings,
+      match: { params: { username } = {} } = {},
+      searchRepo,
+      searchFollowers,
+      searchFollowing,
+    } = this.props;
+
+    this.setState({ selected });
+
+    if (selected === 'repos') {
+      searchRepo({ username, page: repos.page });
+    } else if (selected === 'followers') {
+      searchFollowers({ username, page: followers.page });
+    } else if (selected === 'followings') {
+      searchFollowing({ username, page: followings.page });
+    }
+  }
+
   render() {
     const {
       users,
       repos,
       followers,
       followings,
+      match: { params: { username } = {} } = {},
     } = this.props;
 
     const { selected } = this.state;
@@ -40,7 +73,7 @@ class User extends Component {
     const user = users.data[0] || {};
 
     return (
-      <section style={{ padding: '10px 100px' }}>
+      <StyledUserContainer>
         <Row>
           <Col xs={4}>
             <div style={{ padding: 20 }}>
@@ -58,12 +91,12 @@ class User extends Component {
               <p>
                 Created:
                 {' '}
-                {user.created_at}
+                {moment(user.created_at).local().format('YYYY-MM-DD')}
               </p>
               <p>
                 Updated:
                 {' '}
-                {user.updated_at}
+                {moment(user.update_at).local().format('YYYY-MM-DD')}
               </p>
             </div>
           </Col>
@@ -72,38 +105,22 @@ class User extends Component {
               <TabToggle
                 titles={[{
                   name: `Repositories ${repos.total}`,
-                  key: 'repo',
+                  key: 'repos',
                 }, {
                   name: `Followers ${followers.total}`,
                   key: 'followers',
                 }, {
                   name: `Following ${followings.total}`,
-                  key: 'following',
+                  key: 'followings',
                 }]}
                 selected={selected}
+                handleSelect={this.handleSelect}
               />
-              <div style={{ padding: 10 }}>
-                {repos.data.map(repo => (
-                  <ListRow key={repo.id}>
-                    <Span color="#005cd0" fontSize="20px">
-                      {repo.name}
-                    </Span>
-                    <Span color="#555" margin="0 10px 0 auto">
-                      {repo.updated_at}
-                    </Span>
-                  </ListRow>
-                ))}
-                <Pagination
-                  page={repos.page}
-                  total={repos.total}
-                  perPage={30}
-                  // onChange={() => console.log('test')}
-                />
-              </div>
+              <RepoContent username={username} selected={selected} />
             </div>
           </Col>
         </Row>
-      </section>
+      </StyledUserContainer>
     );
   }
 }
@@ -116,6 +133,8 @@ User.propTypes = {
   followings: PropTypes.shape({}),
   searchUser: PropTypes.func,
   searchRepo: PropTypes.func,
+  searchFollowers: PropTypes.func,
+  searchFollowing: PropTypes.func,
 };
 
 User.defaultProps = {
@@ -126,6 +145,8 @@ User.defaultProps = {
   followings: {},
   searchUser: null,
   searchRepo: null,
+  searchFollowers: null,
+  searchFollowing: null,
 };
 
 function mapStateToProps(state) {
@@ -145,5 +166,7 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   searchUser: searchUserAction,
-  searchRepo: searchRepoAction,
+  searchRepo: searchReposAction,
+  searchFollowers: searchFollowersAction,
+  searchFollowing: searchFollowingAction,
 })(User);

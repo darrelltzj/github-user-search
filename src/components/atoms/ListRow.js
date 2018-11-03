@@ -6,6 +6,8 @@ const StyledListRow = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+flex-wrap: wrap;
+align-items: center;
 padding: 10px 0;
 `;
 

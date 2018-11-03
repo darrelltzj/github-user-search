@@ -14,7 +14,7 @@ export default function ({ username = '', page = 1 } = {}) {
         message: 'Searching...',
       });
 
-      const res = await axios({
+      const data = await axios({
         url: `https://api.github.com/users/${username}/followers`,
         method: 'GET',
         params: {
@@ -23,15 +23,15 @@ export default function ({ username = '', page = 1 } = {}) {
         },
       }).then(response => response.data);
 
-      console.log('res', res);
+      console.log('data', data);
 
       await dispatch({
         type: FOLLOWERS_SEARCHED,
-        data: res.items,
+        data,
         page,
       });
 
-      return res;
+      return data;
     } catch (error) {
       dispatch({ type: FOLLOWERS_FAILED, error });
 

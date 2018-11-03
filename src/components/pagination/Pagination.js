@@ -4,15 +4,9 @@ import PropTypes from 'prop-types';
 function Pagination(props) {
   const {
     page,
-    total,
-    perPage,
+    last,
     onChange,
   } = props;
-
-  const last = Math.min(
-    Math.floor(1000 / perPage),
-    total >= perPage ? Math.floor(total / perPage) + 1 : 1,
-  );
 
   return (
     <div style={{ textAlign: 'center' }}>
@@ -61,15 +55,13 @@ function Pagination(props) {
 
 Pagination.propTypes = {
   page: PropTypes.number,
-  total: PropTypes.number,
-  perPage: PropTypes.number,
+  last: PropTypes.number,
   onChange: PropTypes.func,
 };
 
 Pagination.defaultProps = {
   page: 1,
-  total: 0,
-  perPage: 30,
+  last: 1,
   onChange: null,
 };
 

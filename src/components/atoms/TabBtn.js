@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const StyledTabBtn = styled.div`
+const StyledTabBtn = styled.span`
 padding: 10px;
 margin-right: 10px;
 text-align: center;
@@ -14,15 +14,26 @@ border-bottom: solid ${props => (props.selected ? '2px #f55400' : '1px #999')};
 :hover {
   border-bottom: solid ${props => (props.selected ? '2px #f55400' : '2px #999')};
 }
+
+@media (max-width: 576px) {
+  margin-right: 2px;
+  font-size: 15px;
+}
 `;
 
 function TabBtn(props) {
-  const { name, selected } = props;
+  const {
+    type,
+    name,
+    selected,
+    handleSelect,
+  } = props;
   return (
-    <StyledTabBtn selected={selected}>
-      <span>
-        {name}
-      </span>
+    <StyledTabBtn
+      selected={selected}
+      onClick={() => handleSelect(type)}
+    >
+      {name}
     </StyledTabBtn>
   );
 }
