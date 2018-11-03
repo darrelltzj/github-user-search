@@ -11,7 +11,7 @@ import searchFollowingAction from '../actions/followingActions';
 import Row from '../components/layouts/Row';
 import Col from '../components/layouts/Col';
 import TabToggle from './TabToggle';
-import RepoContent from './RepoContent';
+import TabContent from './TabContent';
 
 const StyledUserContainer = styled.section`
 padding: 10px 100px;
@@ -116,7 +116,10 @@ class User extends Component {
                 selected={selected}
                 handleSelect={this.handleSelect}
               />
-              <RepoContent username={username} selected={selected} />
+              <TabContent
+                username={username}
+                selected={selected}
+              />
             </div>
           </Col>
         </Row>
