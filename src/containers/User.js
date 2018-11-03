@@ -7,8 +7,14 @@ import searchRepoAction from '../actions/repositoryActions';
 import Row from '../components/layouts/Row';
 import Col from '../components/layouts/Col';
 import Pagination from '../components/pagination/Pagination';
+import TabToggle from './TabToggle';
 
 class User extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { selected: 'repo' };
+  }
+
   async componentDidMount() {
     const {
       searchUser,
@@ -20,8 +26,17 @@ class User extends Component {
   }
 
   render() {
-    const { users, repos } = this.props;
+    const {
+      users,
+      repos,
+      followers,
+      followings,
+    } = this.props;
+
+    const { selected } = this.state;
+
     const user = users.data[0] || {};
+
     return (
       <section style={{ padding: '10px 100px' }}>
         <Row>
@@ -52,40 +67,19 @@ class User extends Component {
           </Col>
           <Col xs={8}>
             <div style={{ padding: 20 }}>
-              <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-              }}
-              >
-                <div style={{
-                  padding: 10,
-                  marginRight: 10,
-                  textAlign: 'center',
-                }}
-                >
-                  <span>
-                    Repositories
-                    {' '}
-                    {repos.total}
-                  </span>
-                </div>
-                <div style={{
-                  padding: 10,
-                  marginRight: 10,
-                  textAlign: 'center',
-                }}
-                >
-                  <span>Followers</span>
-                </div>
-                <div style={{
-                  padding: 10,
-                  marginRight: 10,
-                  textAlign: 'center',
-                }}
-                >
-                  <span>Following</span>
-                </div>
-              </div>
+              <TabToggle
+                titles={[{
+                  name: `Repositories ${repos.total}`,
+                  key: 'repo',
+                }, {
+                  name: `Followers ${followers.total}`,
+                  key: 'followers',
+                }, {
+                  name: `Following ${followings.total}`,
+                  key: 'following',
+                }]}
+                selected={selected}
+              />
               <div style={{ padding: 10 }}>
                 {repos.data.map(repo => (
                   <div
@@ -100,6 +94,7 @@ class User extends Component {
                     <span style={{
                       marginRight: 10,
                       fontSize: 20,
+                      color: '#005cd0',
                     }}
                     >
                       {repo.name}
@@ -107,6 +102,7 @@ class User extends Component {
                     <span style={{
                       marginRight: 10,
                       marginLeft: 'auto',
+                      color: '#555',
                     }}
                     >
                       {repo.updated_at}
@@ -132,6 +128,8 @@ User.propTypes = {
   match: PropTypes.shape({}),
   users: PropTypes.shape({}),
   repos: PropTypes.shape({}),
+  followers: PropTypes.shape({}),
+  followings: PropTypes.shape({}),
   searchUser: PropTypes.func,
   searchRepo: PropTypes.func,
 };
@@ -140,13 +138,25 @@ User.defaultProps = {
   match: {},
   users: {},
   repos: {},
+  followers: {},
+  followings: {},
   searchUser: null,
   searchRepo: null,
 };
 
 function mapStateToProps(state) {
-  const { users, repos } = state;
-  return { users, repos };
+  const {
+    users,
+    repos,
+    followers,
+    followings,
+  } = state;
+  return {
+    users,
+    repos,
+    followers,
+    followings,
+  };
 }
 
 export default connect(mapStateToProps, {

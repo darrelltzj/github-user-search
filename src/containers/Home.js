@@ -47,8 +47,6 @@ class Home extends Component {
       } = {},
     } = this.props;
 
-    console.log(loading);
-
     return (
       <Loader
         loading={loading && true}

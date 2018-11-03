@@ -60,7 +60,7 @@ export function searchUserAction(username) {
         data,
         repos: data.public_repos || 0,
         followers: data.followers || 0,
-        following: data.following || 0,
+        followings: data.following || 0,
       });
 
       return data;
