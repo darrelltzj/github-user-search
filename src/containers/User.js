@@ -7,6 +7,8 @@ import searchRepoAction from '../actions/repositoryActions';
 import Row from '../components/layouts/Row';
 import Col from '../components/layouts/Col';
 import Pagination from '../components/pagination/Pagination';
+import ListRow from '../components/atoms/ListRow';
+import Span from '../components/atoms/Span';
 import TabToggle from './TabToggle';
 
 class User extends Component {
@@ -82,32 +84,14 @@ class User extends Component {
               />
               <div style={{ padding: 10 }}>
                 {repos.data.map(repo => (
-                  <div
-                    key={repo.id}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      padding: '10px 0',
-                    }}
-                  >
-                    <span style={{
-                      marginRight: 10,
-                      fontSize: 20,
-                      color: '#005cd0',
-                    }}
-                    >
+                  <ListRow key={repo.id}>
+                    <Span color="#005cd0" fontSize="20px">
                       {repo.name}
-                    </span>
-                    <span style={{
-                      marginRight: 10,
-                      marginLeft: 'auto',
-                      color: '#555',
-                    }}
-                    >
+                    </Span>
+                    <Span color="#555" margin="0 10px 0 auto">
                       {repo.updated_at}
-                    </span>
-                  </div>
+                    </Span>
+                  </ListRow>
                 ))}
                 <Pagination
                   page={repos.page}
