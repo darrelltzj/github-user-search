@@ -39,6 +39,7 @@
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "lint": "eslint 'src/**/*.js'",
-    "lint:fix": "eslint 'src/**/*.js' --fix"
+    "lint:fix": "eslint 'src/**/*.js' --fix",
+    "heroku-postbuild": "yarn build"
   }
 }
