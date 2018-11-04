@@ -12,6 +12,7 @@ import Row from '../components/layouts/Row';
 import Col from '../components/layouts/Col';
 import TabToggle from './TabToggle';
 import TabContent from './TabContent';
+import Loader from '../components/atoms/Loader';
 
 const StyledUserContainer = styled.section`
 padding: 10px 100px;
@@ -35,6 +36,30 @@ class User extends Component {
     } = this.props;
     await searchUser(username);
     await searchRepo({ username, page: 1 });
+  }
+
+  async componentDidUpdate(prevProps) {
+    const {
+      searchUser,
+      searchRepo,
+      searchFollowers,
+      searchFollowing,
+      match: { params: { username } = {} } = {},
+    } = this.props;
+
+    const { selected } = this.state;
+
+    if (prevProps.match.params.username !== username) {
+      await searchUser(username);
+
+      if (selected === 'repos') {
+        await searchRepo({ username, page: 1 });
+      } else if (selected === 'followers') {
+        await searchFollowers({ username, page: 1 });
+      } else if (selected === 'followings') {
+        await searchFollowing({ username, page: 1 });
+      }
+    }
   }
 
   handleSelect(selected) {
@@ -101,26 +126,33 @@ class User extends Component {
             </div>
           </Col>
           <Col xs={8}>
-            <div style={{ padding: 20 }}>
-              <TabToggle
-                titles={[{
-                  name: `Repositories ${repos.total}`,
-                  key: 'repos',
-                }, {
-                  name: `Followers ${followers.total}`,
-                  key: 'followers',
-                }, {
-                  name: `Following ${followings.total}`,
-                  key: 'followings',
-                }]}
-                selected={selected}
-                handleSelect={this.handleSelect}
-              />
-              <TabContent
-                username={username}
-                selected={selected}
-              />
-            </div>
+            <Loader
+              loading={(
+                users.loading || repos.loading || followers.loading || followings.loading
+              ) && true}
+              message={users.loading || repos.loading || followers.loading || followings.loading}
+            >
+              <div style={{ padding: 20 }}>
+                <TabToggle
+                  titles={[{
+                    name: `Repositories ${repos.total}`,
+                    key: 'repos',
+                  }, {
+                    name: `Followers ${followers.total}`,
+                    key: 'followers',
+                  }, {
+                    name: `Following ${followings.total}`,
+                    key: 'followings',
+                  }]}
+                  selected={selected}
+                  handleSelect={this.handleSelect}
+                />
+                <TabContent
+                  username={username}
+                  selected={selected}
+                />
+              </div>
+            </Loader>
           </Col>
         </Row>
       </StyledUserContainer>

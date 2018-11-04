@@ -11,7 +11,7 @@ export default function ({ username = '', page = 1 } = {}) {
     try {
       await dispatch({
         type: FOLLOWERS_LOADING,
-        message: 'Searching...',
+        message: 'Loading Followers...',
       });
 
       const data = await axios({

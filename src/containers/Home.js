@@ -55,7 +55,7 @@ class Home extends Component {
         <div
           style={{
             padding: 10,
-            minHeight: '80vh',
+            minHeight: '78vh',
           }}
         >
           <form
@@ -105,16 +105,18 @@ class Home extends Component {
                 </Link>
               ))}
             </Row>
-            <Pagination
-              page={page}
-              last={(
-                Math.min(
-                  Math.floor(1000 / 30),
-                  total >= 30 ? Math.floor(total / 30) + 1 : 1,
-                )
-              )}
-              onChange={this.handlePagination}
-            />
+            {data && data.length > 0 && (
+              <Pagination
+                page={page}
+                last={(
+                  Math.min(
+                    Math.floor(1000 / 30),
+                    total >= 30 ? Math.floor(total / 30) + 1 : 1,
+                  )
+                )}
+                onChange={this.handlePagination}
+              />
+            )}
           </div>
         </div>
       </Loader>

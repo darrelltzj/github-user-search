@@ -27,8 +27,6 @@ export function searchUsersAction({ q = '', page = 1 } = {}) {
         },
       }).then(response => response.data);
 
-      console.log('res', res);
-
       await dispatch({
         type: USERS_SEARCHED,
         data: res.items,
@@ -48,7 +46,10 @@ export function searchUsersAction({ q = '', page = 1 } = {}) {
 export function searchUserAction(username) {
   return async function search(dispatch) {
     try {
-      await dispatch({ type: USERS_LOADING });
+      await dispatch({
+        type: USERS_LOADING,
+        message: 'Loading...',
+      });
 
       const data = await axios({
         url: `https://api.github.com/users/${username}`,

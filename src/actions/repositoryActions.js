@@ -11,7 +11,7 @@ export default function ({ username = '', page = 1 } = {}) {
     try {
       await dispatch({
         type: REPOS_LOADING,
-        message: 'Searching...',
+        message: 'Loading Repositories...',
       });
 
       const data = await axios({
