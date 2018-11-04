@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import searchReposAction from '../actions/repositoryActions';
-import ListRow from '../components/atoms/ListRow';
+import Row from '../components/layouts/Row';
 import A from '../components/atoms/A';
 import Span from '../components/atoms/Span';
-import Pagination from '../components/pagination/Pagination';
+import Pagination from '../components/atoms/Pagination';
 
 function RepoContent(props) {
   const { username, repos, searchRepos } = props;
   return (
     <React.Fragment>
       {repos.data.map(repo => (
-        <ListRow key={repo.id}>
+        <Row key={repo.id} alignItems="center" padding="10px 0">
           <A
             href={repo.svn_url}
             target="_blank"
@@ -31,7 +31,7 @@ function RepoContent(props) {
           >
             {moment(repo.updated_at).local().format('YYYY-MM-DD')}
           </Span>
-        </ListRow>
+        </Row>
       ))}
       <Pagination
         page={repos.page}

@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 import { searchUsersAction } from '../actions/userActions';
 import Row from '../components/layouts/Row';
 import Col from '../components/layouts/Col';
-import Input from '../components/forms/Input';
-import Button from '../components/forms/Button';
+import Input from '../components/atoms/Input';
+import Button from '../components/atoms/Button';
 import Loader from '../components/atoms/Loader';
-import Pagination from '../components/pagination/Pagination';
+import Pagination from '../components/atoms/Pagination';
 
 class Home extends Component {
   constructor(props) {
