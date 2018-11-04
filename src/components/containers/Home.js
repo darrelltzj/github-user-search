@@ -1,32 +1,49 @@
+/* global window */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { searchUsersAction } from '../actions/userActions';
-import Row from '../components/layouts/Row';
-import Col from '../components/layouts/Col';
-import Input from '../components/atoms/Input';
-import Button from '../components/atoms/Button';
-import Loader from '../components/atoms/Loader';
-import Pagination from '../components/atoms/Pagination';
+import { searchUsersAction, clearUsersAction } from '../../actions/userActions';
+import Button from '../atoms/Button';
+import Input from '../atoms/Input';
+import Loader from '../atoms/Loader';
+import Pagination from '../atoms/Pagination';
+import Row from '../layouts/Row';
+import Col from '../layouts/Col';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { q: '' };
+    this.state = {
+      q: window.localStorage.getItem('q'),
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePagination = this.handlePagination.bind(this);
   }
 
+  componentDidMount() {
+    this.handleSubmit();
+    this.searchInput.focus();
+  }
+
   handleChange(q) { this.setState({ q }); }
 
   handleSubmit(e) {
-    const { searchUsers } = this.props;
+    const { searchUsers, clearUsers } = this.props;
+
     const { q } = this.state;
-    e.preventDefault();
-    searchUsers({ q, page: 1 });
+
+    if (e) { e.preventDefault(); }
+
+    if (q !== undefined && q !== null && q !== '') {
+      searchUsers({ q, page: 1 });
+    } else {
+      clearUsers();
+    }
+
+    window.localStorage.setItem('q', q);
   }
 
   handlePagination(page) {
@@ -69,6 +86,7 @@ class Home extends Component {
             <Row>
               <Col xs={10}>
                 <Input
+                  ref={(input) => { this.searchInput = input; }}
                   value={q}
                   placeholder="Username"
                   onChange={e => this.handleChange(e.target.value)}
@@ -127,11 +145,13 @@ class Home extends Component {
 Home.propTypes = {
   users: PropTypes.shape({}),
   searchUsers: PropTypes.func,
+  clearUsers: PropTypes.func,
 };
 
 Home.defaultProps = {
   users: {},
   searchUsers: null,
+  clearUsers: null,
 };
 
 function mapStateToProps(state) {
@@ -141,4 +161,5 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   searchUsers: searchUsersAction,
+  clearUsers: clearUsersAction,
 })(Home);

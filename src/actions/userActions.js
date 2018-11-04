@@ -72,3 +72,14 @@ export function searchUserAction(username) {
     }
   };
 }
+
+export function clearUsersAction() {
+  return function clear(dispatch) {
+    dispatch({
+      type: USERS_SEARCHED,
+      data: [],
+      page: 1,
+      total: 0,
+    });
+  };
+}

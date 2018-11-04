@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import searchReposAction from '../actions/repositoryActions';
-import Row from '../components/layouts/Row';
-import A from '../components/atoms/A';
-import Span from '../components/atoms/Span';
-import Pagination from '../components/atoms/Pagination';
+import searchReposAction from '../../actions/repositoryActions';
+import A from '../atoms/A';
+import Pagination from '../atoms/Pagination';
+import Span from '../atoms/Span';
+import Row from '../layouts/Row';
 
 function RepoContent(props) {
   const { username, repos, searchRepos } = props;

@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import configureStore from './store';
 
-import Home from './containers/Home';
-import User from './containers/User';
+import Home from './components/containers/Home';
+import User from './components/containers/User';
 import Main from './components/layouts/Main';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
@@ -16,7 +16,11 @@ const store = configureStore();
 export default function () {
   return (
     <Main>
-      <Header><h1>Github Users</h1></Header>
+      <Header>
+        <A href="/" color="#fff">
+          <h1>Github Users</h1>
+        </A>
+      </Header>
       <Provider store={store}>
         <Router>
           <Switch>
@@ -26,14 +30,14 @@ export default function () {
         </Router>
       </Provider>
       <Footer>
-        <Span color="grey">
+        <Span color="#777">
           Designed by
           {' '}
           <A
             href="https://www.darrelltzj.com/"
             target="_blank"
             rel="noopener noreferrer"
-            color="grey"
+            color="#777"
           >
             DarrellTZJ
           </A>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import TabBtn from '../components/atoms/TabBtn';
+import TabBtn from './TabBtn';
 
 const StyledListRow = styled.div`
 display: flex;

@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components';
 
-import { searchUserAction } from '../actions/userActions';
-import searchReposAction from '../actions/repositoryActions';
-import searchFollowersAction from '../actions/followerActions';
-import searchFollowingAction from '../actions/followingActions';
-import Row from '../components/layouts/Row';
-import Col from '../components/layouts/Col';
-import TabToggle from './TabToggle';
-import TabContent from './TabContent';
-import Loader from '../components/atoms/Loader';
+import { searchUserAction } from '../../actions/userActions';
+import searchReposAction from '../../actions/repositoryActions';
+import searchFollowersAction from '../../actions/followerActions';
+import searchFollowingAction from '../../actions/followingActions';
+import Loader from '../atoms/Loader';
+import TabToggle from '../atoms/TabToggle';
+import Col from '../layouts/Col';
+import Row from '../layouts/Row';
+import TabContent from '../content/TabContent';
 
 const StyledUserContainer = styled.section`
 padding: 10px 100px;
@@ -132,7 +132,7 @@ class User extends Component {
               ) && true}
               message={users.loading || repos.loading || followers.loading || followings.loading}
             >
-              <div style={{ padding: 20 }}>
+              <div style={{ padding: 20, minHeight: '70vh' }}>
                 <TabToggle
                   titles={[{
                     name: `Repositories ${repos.total}`,
