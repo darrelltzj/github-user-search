@@ -15,7 +15,9 @@ The app was developed with the following engines.
 ## Setup
 
 1) Clone Repository
-https://cloud.google.com/maps-platform/
+```
+git clone https://github.com/darrelltzj/github-user-search.git
+```
 
 2) Change into working directory.
 
@@ -37,7 +39,7 @@ yarn start
 yarn build
 ```
 
-## To Do
+## Objectives
 
 * ✔️ There is a search bar to let the user search by username (login name)
 
