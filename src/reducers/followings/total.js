@@ -1,4 +1,4 @@
-import { USER_SEARCHED } from '../types';
+import { USER_SEARCHED } from '../../actions/user';
 
 const INITIAL_STATE = 0;
 

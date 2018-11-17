@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components';
 
-import { searchUserAction } from '../../actions/userActions';
-import searchReposAction from '../../actions/repositoryActions';
-import searchFollowersAction from '../../actions/followerActions';
-import searchFollowingAction from '../../actions/followingActions';
+import { searchUserActn } from '../../actions/user';
+import { searchReposActn } from '../../actions/repo';
+import { searchFollowersActn } from '../../actions/follower';
+import { searchFollowingsActn } from '../../actions/following';
 import Loader from '../atoms/Loader';
 import TabToggle from '../atoms/TabToggle';
 import Col from '../layouts/Col';
@@ -34,7 +34,7 @@ class User extends Component {
       searchRepo,
       match: { params: { username } = {} } = {},
     } = this.props;
-    await searchUser(username);
+    await searchUser({ username });
     await searchRepo({ username, page: 1 });
   }
 
@@ -200,8 +200,8 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  searchUser: searchUserAction,
-  searchRepo: searchReposAction,
-  searchFollowers: searchFollowersAction,
-  searchFollowing: searchFollowingAction,
+  searchUser: searchUserActn,
+  searchRepo: searchReposActn,
+  searchFollowers: searchFollowersActn,
+  searchFollowing: searchFollowingsActn,
 })(User);

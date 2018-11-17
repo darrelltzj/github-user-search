@@ -3,7 +3,7 @@ import {
   USERS_FAILED,
   USERS_SEARCHED,
   USER_SEARCHED,
-} from '../types';
+} from '../../actions/user';
 
 const INITIAL_STATE = null;
 

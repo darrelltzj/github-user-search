@@ -1,4 +1,4 @@
-import { REPOS_SEARCHED } from '../types';
+import { REPOS_SEARCHED } from '../../actions/repo';
 
 const INITIAL_STATE = [];
 

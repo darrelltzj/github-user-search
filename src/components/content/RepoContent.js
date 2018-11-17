@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import searchReposAction from '../../actions/repositoryActions';
+import { searchReposActn } from '../../actions/repo';
 import A from '../atoms/A';
 import Pagination from '../atoms/Pagination';
 import Span from '../atoms/Span';
@@ -48,5 +48,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  searchRepos: searchReposAction,
+  searchRepos: searchReposActn,
 })(RepoContent);

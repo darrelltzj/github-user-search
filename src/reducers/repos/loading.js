@@ -2,7 +2,7 @@ import {
   REPOS_LOADING,
   REPOS_FAILED,
   REPOS_SEARCHED,
-} from '../types';
+} from '../../actions/repo';
 
 const INITIAL_STATE = null;
 

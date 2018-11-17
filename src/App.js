@@ -1,7 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import configureStore from './store';
+import { sagaMiddleware, store } from './store';
+import rootSaga from './sagas/index';
 
 import Home from './components/containers/Home';
 import User from './components/containers/User';
@@ -11,7 +12,9 @@ import Footer from './components/layouts/Footer';
 import A from './components/atoms/A';
 import Span from './components/atoms/Span';
 
-const store = configureStore();
+const configureStore = store();
+
+sagaMiddleware.run(rootSaga);
 
 export default function () {
   return (
@@ -21,7 +24,7 @@ export default function () {
           <h1>Github Users</h1>
         </A>
       </Header>
-      <Provider store={store}>
+      <Provider store={configureStore}>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />

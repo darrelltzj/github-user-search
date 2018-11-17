@@ -2,7 +2,7 @@ import {
   FOLLOWINGS_LOADING,
   FOLLOWINGS_FAILED,
   FOLLOWINGS_SEARCHED,
-} from '../types';
+} from '../../actions/following';
 
 const INITIAL_STATE = null;
 

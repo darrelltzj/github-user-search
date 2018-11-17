@@ -1,4 +1,4 @@
-import { FOLLOWERS_SEARCHED } from '../types';
+import { FOLLOWERS_SEARCHED } from '../../actions/follower';
 
 const INITIAL_STATE = 1;
 

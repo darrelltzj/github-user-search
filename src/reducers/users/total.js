@@ -1,7 +1,7 @@
 import {
   USERS_SEARCHED,
   USER_SEARCHED,
-} from '../types';
+} from '../../actions/user';
 
 const INITIAL_STATE = 0;
 

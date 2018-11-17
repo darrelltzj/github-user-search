@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { searchUsersAction, clearUsersAction } from '../../actions/userActions';
+import { searchUsersActn, clearUsersActn } from '../../actions/user';
 import Button from '../atoms/Button';
 import Input from '../atoms/Input';
 import Loader from '../atoms/Loader';
@@ -159,7 +159,9 @@ function mapStateToProps(state) {
   return { users };
 }
 
-export default connect(mapStateToProps, {
-  searchUsers: searchUsersAction,
-  clearUsers: clearUsersAction,
-})(Home);
+const mapDispatchToProps = {
+  searchUsers: searchUsersActn,
+  clearUsers: clearUsersActn,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import searchFollowingsAction from '../../actions/followingActions';
+import { searchFollowingsActn } from '../../actions/following';
 import Pagination from '../atoms/Pagination';
 import Row from '../layouts/Row';
 
@@ -48,5 +48,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  searchFollowings: searchFollowingsAction,
+  searchFollowings: searchFollowingsActn,
 })(FollowerContent);
