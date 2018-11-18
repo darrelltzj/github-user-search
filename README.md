@@ -1,6 +1,10 @@
 # Github User Search
 
-The App can be tried out at https://the-github-user-search.herokuapp.com/
+The App can be tried out at
+
+Heroku: https://the-github-user-search.herokuapp.com/
+
+AWS: http://ec2-18-225-35-22.us-east-2.compute.amazonaws.com/
 
 ## Engines
 
@@ -64,7 +68,7 @@ Webpack is being used to build the application
 
 * The application is production ready (HINT: try Google’s PageSpeed or Lighthouse)
 
-* The application is deployed on AWS instead of Heroku or Now
+* ✔️ The application is deployed on AWS instead of Heroku or Now
 
 * The application supports IE10 and/or Android native browser (Chrome 30.0)
 
