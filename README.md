@@ -88,3 +88,7 @@ The project supports code splitting for each pages
 * There is animated transition between pages
 
 * ✔️ The application supports theming and can easily be switched between themes
+
+    * ✔️ Enable Env
+
+    * Refactor Env Method. Multiple Env Methods (development, production, etc.)

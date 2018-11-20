@@ -12,6 +12,7 @@
     "babel-loader": "^8.0.4",
     "babel-polyfill": "^6.26.0",
     "css-loader": "^1.0.1",
+    "env-cmd": "^8.0.2",
     "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -36,8 +37,8 @@
     "styled-components": "^4.0.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production",
+    "start": "env-cmd .env webpack-dev-server --mode development --open --hot",
+    "build": "env-cmd .env webpack --mode production",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "eslint 'src/**/*.js' --fix",
     "heroku-postbuild": "yarn build"
