@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import styled from 'styled-components';
 
-import { searchUserActn } from '../../actions/user';
-import { searchReposActn } from '../../actions/repo';
-import { searchFollowersActn } from '../../actions/follower';
-import { searchFollowingsActn } from '../../actions/following';
-import Loader from '../atoms/Loader';
-import TabToggle from '../atoms/TabToggle';
-import Col from '../layouts/Col';
-import Row from '../layouts/Row';
-import TabContent from '../content/TabContent';
+import { searchUserActn } from '../actions/user';
+import { searchReposActn } from '../actions/repo';
+import { searchFollowersActn } from '../actions/follower';
+import { searchFollowingsActn } from '../actions/following';
+import Loader from '../components/atoms/Loader';
+import TabToggle from '../components/atoms/TabToggle';
+import Col from '../components/layouts/Col';
+import Row from '../components/layouts/Row';
+import UserContent from '../components/containers/UserContent';
 
 const StyledUserContainer = styled.section`
 padding: 10px 100px;
@@ -147,7 +147,7 @@ class User extends Component {
                   selected={selected}
                   handleSelect={this.handleSelect}
                 />
-                <TabContent
+                <UserContent
                   username={username}
                   selected={selected}
                 />

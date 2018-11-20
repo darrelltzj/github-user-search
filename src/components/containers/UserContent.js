@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import RepoContent from './RepoContent';
-import FollowerContent from './FollowerContent';
-import FollowingContent from './FollowingContent';
+import RepoContent from './UserRepos';
+import FollowerContent from './UserFollowers';
+import FollowingContent from './UserFollowings';
 
 const StyledTabContent = styled.div`
 padding: 10px;
 `;
 
-function TabContent(props) {
+function UserContent(props) {
   const { username, selected } = props;
   return (
     <StyledTabContent>
@@ -21,4 +21,4 @@ function TabContent(props) {
   );
 }
 
-export default TabContent;
+export default UserContent;

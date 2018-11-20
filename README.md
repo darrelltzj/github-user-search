@@ -70,6 +70,8 @@ Webpack is being used to build the application
 
 * ✔️ The application is deployed on AWS instead of Heroku or Now
 
+    * Deploy on AWS with HTTPS
+
 * The application supports IE10 and/or Android native browser (Chrome 30.0)
 
 * The pages are server-side rendered and are cached in the server
@@ -85,4 +87,4 @@ The project supports code splitting for each pages
 
 * There is animated transition between pages
 
-* The application supports theming and can easily be switched between themes
+* ✔️ The application supports theming and can easily be switched between themes
