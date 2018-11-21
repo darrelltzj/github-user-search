@@ -66,17 +66,23 @@ Webpack is being used to build the application
 
 * ✔️ A documentation on how the application works and how to set up and build the project is provided
 
+    * Provide more details
+
 * The application is production ready (HINT: try Google’s PageSpeed or Lighthouse)
 
 * ✔️ The application is deployed on AWS instead of Heroku or Now
 
     * Deploy on AWS with HTTPS
 
+    * Implement continuous integration
+
 * The application supports IE10 and/or Android native browser (Chrome 30.0)
 
 * The pages are server-side rendered and are cached in the server
 
 * ✔️ All pages' URL is reusable - meaning it can be copied and pasted on different browser and still shows the same result
+
+    * 404 Page
 
 * All pages are SEO optimised
 The project supports code splitting for each pages
@@ -85,7 +91,9 @@ The project supports code splitting for each pages
 
 * The search input does the searching as you type (See google search as an example)
 
-* There is animated transition between pages
+* ✔️ There is animated transition between pages
+
+    * Update react-transition-group to version 2
 
 * ✔️ The application supports theming and can easily be switched between themes
 

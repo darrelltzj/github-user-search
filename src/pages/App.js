@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Header from '../components/containers/Header';
 import Footer from '../components/containers/Footer';
+import withTransition from '../components/hoc/withTransition';
 import Home from './Home';
 import User from './User';
 
@@ -19,8 +20,9 @@ export default function () {
       <Header />
 
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/users/:username" component={User} />
+        <Route exact path="/" component={withTransition(Home)} />
+        <Route exact path="/users/:username" component={withTransition(User)} />
+        {/* <Route render={() => <div>Not Found</div>} /> */}
       </Switch>
 
       <Footer />

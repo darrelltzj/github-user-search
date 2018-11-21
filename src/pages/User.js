@@ -15,10 +15,10 @@ import Row from '../components/layouts/Row';
 import UserContent from '../components/containers/UserContent';
 
 const StyledUserContainer = styled.section`
-padding: 10px 100px;
-@media (max-width: 992px) {
-  padding: 10px 0;
-}
+  padding: 10px 100px;
+  @media (max-width: 992px) {
+    padding: 10px 0;
+  }
 `;
 
 class User extends Component {

@@ -26,4 +26,33 @@ export default createGlobalStyle`
     text-decoration: none;
     color: ${props => props.theme.black};
   }
+
+  .page-appear {
+    opacity: 0;
+  }
+
+  .page-appear.page-appear-active {
+    opacity: 1;
+    transition: all 0.6s linear;
+  }
+
+  .page-enter {
+    opacity: 0;
+  }
+
+  .page-enter.page-enter-active {
+    opacity: 1;
+    transition: all 0.6s linear 0.4s;
+  }
+
+  .page-leave {
+    opacity: 1.0;
+    position:absolute
+  }
+
+  .page-leave.page-leave-active {
+    opacity: 0;
+    transition: all 0.6s linear;
+    position:absolute;
+  }
 `;
