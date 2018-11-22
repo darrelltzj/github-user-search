@@ -5,12 +5,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { searchUsersActn, clearUsersActn } from '../actions/user';
-import Button from '../components/atoms/Button';
-import Input from '../components/atoms/Input';
 import Loader from '../components/atoms/Loader';
 import Pagination from '../components/atoms/Pagination';
 import Row from '../components/layouts/Row';
-import Col from '../components/layouts/Col';
+import HomeSearchForm from '../components/containers/HomeSearchForm';
 
 class Home extends Component {
   constructor(props) {
@@ -23,10 +21,7 @@ class Home extends Component {
     this.handlePagination = this.handlePagination.bind(this);
   }
 
-  componentDidMount() {
-    this.handleSubmit();
-    this.searchInput.focus();
-  }
+  componentDidMount() { this.handleSubmit(); }
 
   handleChange(q) { this.setState({ q }); }
 
@@ -75,30 +70,11 @@ class Home extends Component {
             minHeight: '78vh',
           }}
         >
-          <form
-            onSubmit={e => this.handleSubmit(e)}
-            style={{
-              position: 'sticky',
-              top: 110,
-              zIndex: 5,
-            }}
-          >
-            <Row>
-              <Col xs={10}>
-                <Input
-                  ref={(input) => { this.searchInput = input; }}
-                  value={q}
-                  placeholder="Username"
-                  onChange={e => this.handleChange(e.target.value)}
-                />
-              </Col>
-              <Col xs={2}>
-                <Button type="submit">
-                  Search
-                </Button>
-              </Col>
-            </Row>
-          </form>
+          <HomeSearchForm
+            q={q}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
 
           <div>
             <Row>
@@ -123,6 +99,7 @@ class Home extends Component {
                 </Link>
               ))}
             </Row>
+
             {data && data.length > 0 && (
               <Pagination
                 page={page}

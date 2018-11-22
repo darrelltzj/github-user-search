@@ -89,13 +89,15 @@ The project supports code splitting for each pages
 
 * The results list also asynchronous-ly shows the number of followers and following of each user without going the user page
 
-* The search input does the searching as you type (See google search as an example)
+* ✔️ The search input does the searching as you type (See google search as an example)
 
 * ✔️ There is animated transition between pages
 
     * Update react-transition-group to version 2
 
 * ✔️ The application supports theming and can easily be switched between themes
+
+    * Refactor theme within components
 
     * ✔️ Enable Env
 
