@@ -29,7 +29,7 @@ const StyledSpinner = styled.svg`
 `;
 
 const Circle = styled.circle`
-stroke: #fff;
+stroke: ${props => props.theme.white};
 stroke-linecap: round;
 animation: dash 1.5s ease-in-out infinite;
 `;

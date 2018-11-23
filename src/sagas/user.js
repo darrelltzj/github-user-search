@@ -16,7 +16,6 @@ import {
 
 function* searchUsers({ q = '', page = 1 } = {}) {
   try {
-    // console.log('test')
     yield put({
       type: USERS_LOADING,
       message: 'Searching...',

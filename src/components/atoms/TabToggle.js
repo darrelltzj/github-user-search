@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import TabBtn from './TabBtn';
@@ -24,5 +25,17 @@ function TabToggle(props) {
     </StyledListRow>
   );
 }
+
+TabToggle.propTypes = {
+  titles: PropTypes.arrayOf(PropTypes.shape({})),
+  selected: PropTypes.string,
+  handleSelect: PropTypes.func,
+};
+
+TabToggle.defaultProps = {
+  titles: [],
+  selected: '',
+  handleSelect: null,
+};
 
 export default TabToggle;

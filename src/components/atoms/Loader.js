@@ -12,7 +12,7 @@ position: absolute;
 top: 0;
 left: 0;
 background-color: rgba(0,0,0,.6);
-color: white;
+color: ${props => props.theme.white};
 display: flex;
 display: -webkit-box;
 display: -moz-box;

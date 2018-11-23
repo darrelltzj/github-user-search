@@ -6,8 +6,8 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0px;
   z-index: 10;
-  background-color: #23282e;
-  color: #fff;
+  background-color: ${props => props.theme.greyDark};
+  color: ${props => props.theme.white};
   padding: 10px;
 `;
 

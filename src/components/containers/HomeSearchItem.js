@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const StyledHomeSearchItem = styled.div`
   display: 'block';
-  border-bottom: '1px solid #ececec';
+  border-bottom: 1px solid ${props => props.theme.grey};
   padding: 10px;
 
   :hover {

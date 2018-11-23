@@ -14,7 +14,7 @@ The app was developed with the following engines.
 
  npm 6.4.1
 
- yarn 1.12.1
+ yarn 1.12.3
 
 ## Setup
 
@@ -91,14 +91,14 @@ The project supports code splitting for each pages
 
 * ✔️ The search input does the searching as you type (See google search as an example)
 
+    * Reset when click outside input
+
 * ✔️ There is animated transition between pages
 
     * Update react-transition-group to version 2
 
 * ✔️ The application supports theming and can easily be switched between themes
 
-    * Refactor theme within components
+    * Refactor theme components to theme
 
     * ✔️ Enable Env
-
-    * Refactor Env Method. Multiple Env Methods (development, production, etc.)

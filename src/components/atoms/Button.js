@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export default styled.button`
-background-color: #23282e;
-color: #fff;
+background-color: ${props => props.theme.greyDark};
+color: ${props => props.theme.white};
 width: 100%;
 height: 50px;
 box-sizing: border-box;

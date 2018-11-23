@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const StyledTabBtn = styled.span`
 padding: 10px;
@@ -8,11 +8,11 @@ margin-right: 10px;
 text-align: center;
 font-size: 18px;
 cursor: pointer;
-color: ${props => (props.selected ? '#000' : '#999')};
-border-bottom: solid ${props => (props.selected ? '2px #f55400' : '1px #999')};
+color: ${props => (props.selected ? props.theme.black : props.theme.grey)};
+border-bottom: solid ${props => (props.selected ? `2px ${props.theme.orange}` : `1px ${props.theme.grey}`)};
 
 :hover {
-  border-bottom: solid ${props => (props.selected ? '2px #f55400' : '2px #999')};
+  border-bottom: solid ${props => (props.selected ? `2px ${props.theme.orange}` : `2px ${props.theme.grey}`)};
 }
 
 @media (max-width: 576px) {
@@ -37,5 +37,19 @@ function TabBtn(props) {
     </StyledTabBtn>
   );
 }
+
+TabBtn.propTypes = {
+  type: PropTypes.string,
+  name: PropTypes.string,
+  selected: PropTypes.bool,
+  handleSelect: PropTypes.func,
+};
+
+TabBtn.defaultProps = {
+  type: '',
+  name: '',
+  selected: false,
+  handleSelect: null,
+};
 
 export default TabBtn;

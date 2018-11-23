@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -50,8 +49,6 @@ class HomeSearchForm extends Component {
         cancelToken: new CancelToken((c) => { this.cancelSearch = c; }),
       }).then(response => response.data);
 
-      console.log('search', items);
-
       this.setState({ items });
     } catch (err) {
       if (!axios.isCancel(err)) { this.setState({ items: [] }); }
@@ -64,8 +61,6 @@ class HomeSearchForm extends Component {
     const { q, handleSubmit } = this.props;
 
     const { items } = this.state;
-
-    console.log('items', items);
 
     return (
       <form
