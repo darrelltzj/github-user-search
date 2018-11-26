@@ -4,7 +4,7 @@ The App can be tried out at
 
 Heroku: https://the-github-user-search.herokuapp.com/
 
-AWS: http://ec2-18-225-35-22.us-east-2.compute.amazonaws.com/
+AWS: https://the-github-user-search.darrelltzj.com/
 
 ## Engines
 
@@ -72,7 +72,7 @@ Webpack is being used to build the application
 
 * ✔️ The application is deployed on AWS instead of Heroku or Now
 
-    * Deploy on AWS with HTTPS
+    * ✔️ Enable HTTPS
 
     * Implement continuous integration
 
