@@ -1,4 +1,3 @@
-/* global window */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -14,14 +13,14 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      q: window.localStorage.getItem('q'),
+      q: 'a',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePagination = this.handlePagination.bind(this);
   }
 
-  componentDidMount() { this.handleSubmit(); }
+  // componentDidMount() { this.handleSubmit(); }
 
   handleChange(q) { this.setState({ q }); }
 
@@ -38,7 +37,7 @@ class Home extends Component {
       clearUsers();
     }
 
-    window.localStorage.setItem('q', q);
+    // if (window) window.localStorage.setItem('q', q);
   }
 
   handlePagination(page) {

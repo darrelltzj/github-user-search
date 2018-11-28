@@ -80,6 +80,18 @@ Webpack is being used to build the application
 
 * The pages are server-side rendered and are cached in the server
 
+    * User page data load before render
+
+    * Refactor
+
+    * Troubleshoot Webpack React Plugin https://www.valentinog.com/blog/react-webpack-babel/
+
+    * Troubleshoot ServerStyleSheet
+
+    * Troubleshoot use of window.localstorage
+
+    * Redeploy
+
 * ✔️ All pages' URL is reusable - meaning it can be copied and pasted on different browser and still shows the same result
 
     * Create a 404 Page
