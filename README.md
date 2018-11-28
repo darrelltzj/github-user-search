@@ -82,7 +82,7 @@ Webpack is being used to build the application
 
 * ✔️ All pages' URL is reusable - meaning it can be copied and pasted on different browser and still shows the same result
 
-    * 404 Page
+    * Create a 404 Page
 
 * All pages are SEO optimised
 The project supports code splitting for each pages
@@ -91,7 +91,7 @@ The project supports code splitting for each pages
 
 * ✔️ The search input does the searching as you type (See google search as an example)
 
-    * Reset when click outside input
+    * Reset recommendations on click outside search component
 
 * ✔️ There is animated transition between pages
 
@@ -99,6 +99,6 @@ The project supports code splitting for each pages
 
 * ✔️ The application supports theming and can easily be switched between themes
 
-    * Refactor theme components to theme
+    * Refactor components
 
     * ✔️ Enable Env
