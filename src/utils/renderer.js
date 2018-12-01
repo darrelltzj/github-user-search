@@ -11,8 +11,6 @@ import Header from '../client/components/containers/Header';
 import Footer from '../client/components/containers/Footer';
 import Routes from '../client/Routes';
 
-const sheet = new ServerStyleSheet();
-
 const StyledPage = styled.main`
   display: flex;
   flex-direction: column;
@@ -20,6 +18,8 @@ const StyledPage = styled.main`
 `;
 
 export default (req, store) => {
+  const sheet = new ServerStyleSheet();
+
   const content = renderToString(sheet.collectStyles(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -41,6 +41,8 @@ export default (req, store) => {
     </Provider>,
   ));
 
+  const styles = sheet.getStyleTags();
+
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -50,14 +52,12 @@ export default (req, store) => {
         <meta name="theme-color" content="#000000">
         <link rel="shortcut icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
         <title>Github User Search</title>
+        ${styles}
       </head>
       <body>
-        <noscript>
-          You need to enable JavaScript to run this app.
-        </noscript>
         <div id="root">${content}</div>
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-        <script src="index.js"></script>
+        <script src="/index.js"></script>
       </body>
     </html>
   `;

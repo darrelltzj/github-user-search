@@ -3,7 +3,10 @@ import express from 'express';
 // import { matchRoutes } from 'react-router-config';
 
 import renderer from './utils/renderer';
-import { store } from './utils/store';
+import {
+  configureStore,
+  // sagaMiddleware,
+} from './utils/store';
 // import Routes from './client/Routes';
 
 const app = express();
@@ -11,14 +14,14 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
-  const configureStore = store();
+  const store = configureStore();
 
   // const promises = matchRoutes(Routes, req.path).map(
   //   ({ route }) => route.loadData && route.loadData(store),
   // );
 
   // Promise.all(promises).then(() => {
-  res.send(renderer(req, configureStore));
+  res.send(renderer(req, store));
   // });
 });
 

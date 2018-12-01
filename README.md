@@ -82,11 +82,12 @@ Webpack is being used to build the application
 
     * User page data load before render
 
-    * Refactor
+    * Troubleshoot ServerStyleSheet
+    https://medium.com/styled-components/the-simple-guide-to-server-side-rendering-react-with-styled-components-d31c6b2b8fbf
 
     * Troubleshoot Webpack React Plugin https://www.valentinog.com/blog/react-webpack-babel/
 
-    * Troubleshoot ServerStyleSheet
+    * Refactor
 
     * Troubleshoot use of window.localstorage
 

@@ -5,7 +5,7 @@ import reducers from '../client/reducers/index';
 
 export const sagaMiddleware = createSagaMiddleware();
 
-export const store = () => createStore(
+export const configureStore = () => createStore(
   reducers,
   applyMiddleware(sagaMiddleware),
 );
