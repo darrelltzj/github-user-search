@@ -80,10 +80,13 @@ Webpack is being used to build the application
 
 * The pages are server-side rendered and are cached in the server
 
-    * User page data load before render
+    * ✔️ User page data load before render
+    https://medium.com/@navgarcha7891/react-server-side-rendering-with-simple-redux-store-hydration-9f77ab66900a
 
-    * Troubleshoot ServerStyleSheet
+    * ✔️ Troubleshoot ServerStyleSheet
     https://medium.com/styled-components/the-simple-guide-to-server-side-rendering-react-with-styled-components-d31c6b2b8fbf
+
+    * Fix Warning: Extra attributes from the server: src,alt
 
     * Troubleshoot Webpack React Plugin https://www.valentinog.com/blog/react-webpack-babel/
 

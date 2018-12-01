@@ -30,14 +30,14 @@ class User extends Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  async componentDidMount() {
+  componentWillMount() {
     const {
       searchUser,
       searchRepo,
       match: { params: { username } = {} } = {},
     } = this.props;
-    await searchUser({ username });
-    await searchRepo({ username, page: 1 });
+    searchUser({ username });
+    searchRepo({ username, page: 1 });
   }
 
   async componentDidUpdate(prevProps) {
@@ -201,9 +201,7 @@ function mapStateToProps(state) {
   };
 }
 
-export async function loadData() {
-  return searchUserSaga;
-}
+// export async function loadData() {}
 
 export default connect(mapStateToProps, {
   searchUser: searchUserActn,

@@ -1,5 +1,5 @@
 import {
-  // fork,
+  fork,
   all,
 } from 'redux-saga/effects';
 
@@ -12,14 +12,20 @@ import {
   clearUsersSaga,
 } from './user';
 
-export default function* rootSaga() {
+export default function* root() {
   yield all([
-    searchFollowingsSaga(),
-    searchFollowersSaga(),
-    searchReposSaga(),
-    searchUsersSaga(),
-    searchUserSaga(),
-    clearUsersSaga(),
+    // searchFollowingsSaga(),
+    // searchFollowersSaga(),
+    // searchReposSaga(),
+    // searchUsersSaga(),
+    // searchUserSaga(),
+    // clearUsersSaga(),
+    fork(searchFollowingsSaga),
+    fork(searchFollowersSaga),
+    fork(searchReposSaga),
+    fork(searchUsersSaga),
+    fork(searchUserSaga),
+    fork(clearUsersSaga),
   ]);
   // .map(fork);
 }

@@ -1,6 +1,6 @@
 import withTransition from './components/hoc/withTransition';
 import Home from './pages/Home';
-import User, { loadData } from './pages/User';
+import User from './pages/User';
 
 const Routers = [
   {
@@ -11,7 +11,7 @@ const Routers = [
   {
     path: '/users/:username',
     component: withTransition(User),
-    loadData,
+    // loadData,
   },
 ];
 

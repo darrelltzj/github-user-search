@@ -20,7 +20,7 @@ class Home extends Component {
     this.handlePagination = this.handlePagination.bind(this);
   }
 
-  // componentDidMount() { this.handleSubmit(); }
+  // componentWillMount() { this.handleSubmit(); }
 
   handleChange(q) { this.setState({ q }); }
 
