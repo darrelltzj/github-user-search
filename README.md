@@ -97,13 +97,18 @@ Webpack is being used to build the application
 
     * ✔️ Store Initial Store && Fix Warning: Extra attributes from the server: src,alt
 
-    * Troubleshoot Webpack React Plugin https://www.valentinog.com/blog/react-webpack-babel/
+    * Troubleshoot Webpack React Plugin
+    https://www.valentinog.com/blog/react-webpack-babel/
 
-    * Update to Suspense API https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data
+    * Update to Suspense API
+    https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data
+
+    * Cache Components
+    https://medium.com/@reactcomponentcaching/speedier-server-side-rendering-in-react-16-with-component-caching-e8aa677929b1
 
     * Refactor
 
-    * Redeploy
+    * Redeploy (Heroku && AWS)
 
 * ✔️ All pages' URL is reusable - meaning it can be copied and pasted on different browser and still shows the same result
 
