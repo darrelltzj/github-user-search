@@ -2,7 +2,7 @@
   "name": "github-user-search",
   "version": "0.1.0",
   "private": true,
-  "main": "/src/index.js",
+  "main": "/src/server.js",
   "author": "darrelltzj",
   "license": "MIT",
   "devDependencies": {
