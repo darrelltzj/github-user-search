@@ -1,10 +1,6 @@
 # Github User Search
 
-The App can be tried out at
-
-Heroku: https://the-github-user-search.herokuapp.com/
-
-AWS: https://the-github-user-search.darrelltzj.com/
+The App can be tried out at https://the-github-user-search.herokuapp.com/
 
 ## Engines
 
