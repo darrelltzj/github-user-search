@@ -1,10 +1,6 @@
 # Github User Search
 
-The App can be tried out at
-
-Heroku: https://the-github-user-search.herokuapp.com/
-
-AWS: https://the-github-user-search.darrelltzj.com/
+The App can be tried out at https://the-github-user-search.herokuapp.com/
 
 ## Engines
 
@@ -31,16 +27,29 @@ git clone https://github.com/darrelltzj/github-user-search.git
 yarn
 ```
 
-4) Start the app locally using webpack-dev-server. The app should start at http://localhost:8080/
+4) Set Environment Variables. Example:
 
 ```
-yarn start
+PORT=3000
+REACT_APP_THEME=default
 ```
 
-5) Bundle app into build directory.
+5) Start the App locally on development.
+
+```
+yarn dev
+```
+
+6) Bundle app into build directories for production.
 
 ```
 yarn build
+```
+
+7) Start the App on production.
+
+```
+yarn start
 ```
 
 ## Objectives
@@ -86,13 +95,13 @@ Webpack is being used to build the application
     * ✔️ Troubleshoot ServerStyleSheet
     https://medium.com/styled-components/the-simple-guide-to-server-side-rendering-react-with-styled-components-d31c6b2b8fbf
 
-    * Fix Warning: Extra attributes from the server: src,alt
+    * ✔️ Store Initial Store && Fix Warning: Extra attributes from the server: src,alt
 
     * Troubleshoot Webpack React Plugin https://www.valentinog.com/blog/react-webpack-babel/
 
-    * Refactor
+    * Update to Suspense API https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data
 
-    * Troubleshoot use of window.localstorage
+    * Refactor
 
     * Redeploy
 

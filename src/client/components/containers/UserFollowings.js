@@ -42,6 +42,18 @@ function FollowerContent(props) {
   );
 }
 
+FollowerContent.propTypes = {
+  username: PropTypes.string,
+  followings: PropTypes.shape({}),
+  searchFollowings: PropTypes.func,
+};
+
+FollowerContent.defaultProps = {
+  username: '',
+  followings: {},
+  searchFollowings: null,
+};
+
 function mapStateToProps(state) {
   const { followings } = state;
   return { followings };

@@ -4,6 +4,7 @@ import { StaticRouter, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import styled, { ThemeProvider, ServerStyleSheet } from 'styled-components';
+import serialize from 'serialize-javascript';
 
 import theme from '../client/themes/index';
 import GlobalStyle from '../client/components/layouts/Global';
@@ -57,6 +58,9 @@ export default (req, store) => {
       <body>
         <div id="root">${content}</div>
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+        <script>
+          window.INITIAL_STATE = ${serialize(store.getState())}
+        </script>
         <script src="/index.js"></script>
       </body>
     </html>

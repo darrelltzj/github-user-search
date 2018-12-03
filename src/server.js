@@ -1,10 +1,8 @@
 import 'babel-polyfill';
 import express from 'express';
-// import { matchRoutes } from 'react-router-config';
 
 import renderer from './utils/renderer';
 import configureStore from './utils/store';
-// import Routes from './client/Routes';
 import rootSaga from './client/sagas/index';
 
 const app = express();
@@ -23,6 +21,6 @@ app.get('*', (req, res) => {
   store.close();
 });
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
-});
+app.set('PORT', process.env.PORT);
+
+app.listen(app.get('PORT'));

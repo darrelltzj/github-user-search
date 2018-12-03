@@ -13,14 +13,17 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      q: 'a',
+      q: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePagination = this.handlePagination.bind(this);
   }
 
-  // componentWillMount() { this.handleSubmit(); }
+  componentDidMount() {
+    const { clearUsers } = this.props;
+    return clearUsers();
+  }
 
   handleChange(q) { this.setState({ q }); }
 
@@ -36,8 +39,6 @@ class Home extends Component {
     } else {
       clearUsers();
     }
-
-    // if (window) window.localStorage.setItem('q', q);
   }
 
   handlePagination(page) {

@@ -11,7 +11,6 @@ const Routers = [
   {
     path: '/users/:username',
     component: withTransition(User),
-    // loadData,
   },
 ];
 

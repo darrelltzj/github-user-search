@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+require('dotenv').config();
 
 module.exports = {
   module: {
@@ -13,6 +14,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
+        PORT: JSON.stringify(process.env.PORT),
         REACT_APP_THEME: JSON.stringify(process.env.REACT_APP_THEME),
       },
     }),

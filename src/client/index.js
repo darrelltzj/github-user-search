@@ -1,4 +1,4 @@
-/* global document */
+/* global window document */
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -19,7 +19,11 @@ import Routes from './Routes';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducers, {}, applyMiddleware(sagaMiddleware));
+const store = createStore(
+  reducers,
+  window.INITIAL_STATE,
+  applyMiddleware(sagaMiddleware),
+);
 
 sagaMiddleware.run(rootSaga);
 

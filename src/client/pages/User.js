@@ -14,8 +14,6 @@ import Col from '../components/layouts/Col';
 import Row from '../components/layouts/Row';
 import UserContent from '../components/containers/UserContent';
 
-import { searchUserSaga } from '../sagas/user';
-
 const StyledUserContainer = styled.section`
   padding: 10px 100px;
   @media (max-width: 992px) {
@@ -200,8 +198,6 @@ function mapStateToProps(state) {
     followings,
   };
 }
-
-// export async function loadData() {}
 
 export default connect(mapStateToProps, {
   searchUser: searchUserActn,
