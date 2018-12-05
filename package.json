@@ -59,5 +59,10 @@
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "eslint 'src/**/*.js' --fix",
     "heroku-postbuild": "yarn build"
+  },
+  "engines": {
+    "node": "10.14.0",
+    "npm": "6.4.1",
+    "yarn": "1.12.3"
   }
 }
