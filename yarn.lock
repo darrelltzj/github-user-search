@@ -3530,6 +3530,11 @@ is-glob@^4.0.0:
   dependencies:
     is-extglob "^2.1.1"
 
+is-heroku@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-heroku/-/is-heroku-1.0.1.tgz#46715fcd9d5ce55a9f254e6b9816735ebab38140"
+  integrity sha1-RnFfzZ1c5VqfJU5rmBZzXrqzgUA=
+
 is-installed-globally@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/is-installed-globally/-/is-installed-globally-0.1.0.tgz#0dfd98f5a9111716dd535dda6492f67bf3d25a80"
@@ -5026,6 +5031,14 @@ raw-body@2.3.3:
     http-errors "1.6.3"
     iconv-lite "0.4.23"
     unpipe "1.0.0"
+
+razzle-heroku@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/razzle-heroku/-/razzle-heroku-3.0.0.tgz#18a4e0f077685520bcca94f546b3ababf4d5e3d5"
+  integrity sha512-n61kuoKw9NlMNSwgIR/3PD3XQzWkpCQPrALOk9wcAEmHbMf7zbkc4mTBe//gRu2brCZbdgJ3d75JCQK6hZzlkA==
+  dependencies:
+    is-heroku "^1.0.1"
+    object.entries "^1.0.4"
 
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
   version "1.2.8"

@@ -48,7 +48,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "node build/index.js",
+    "start": "yarn run build && node build/index.js",
     "build": "yarn clean && npm-run-all --parallel build:*",
     "build:server": "webpack --mode production --config webpack.server.js",
     "build:client": "webpack --mode production --config webpack.client.js",
