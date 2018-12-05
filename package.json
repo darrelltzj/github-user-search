@@ -28,6 +28,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "dotenv": "^6.1.0",
+    "dotenv-webpack": "^1.5.7",
     "express": "^4.16.4",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
@@ -47,9 +48,9 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "node -r dotenv/config src/server.js",
+    "start": "node build/index.js",
     "build": "yarn clean && npm-run-all --parallel build:*",
-    "build:server": "webpack  -r dotenv/config --mode production --config webpack.server.js",
+    "build:server": "webpack --mode production --config webpack.server.js",
     "build:client": "webpack --mode production --config webpack.client.js",
     "clean": "rm -rf build && rm -rf public && mkdir build && mkdir public",
     "dev": "npm-run-all --parallel dev:*",
