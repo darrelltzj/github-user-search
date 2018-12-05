@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 require('dotenv').config();
 
+console.log('PORT', process.env.PORT)
+
 module.exports = {
   module: {
     rules: [

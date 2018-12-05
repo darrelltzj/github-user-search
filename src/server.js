@@ -25,6 +25,8 @@ app.get('*', (req, res) => {
 
 console.log(process.env.PORT);
 
+console.log(process.env.REACT_APP_THEME);
+
 app.set('PORT', process.env.PORT);
 
 app.listen(app.get('PORT'));
