@@ -28,7 +28,6 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "dotenv": "^6.1.0",
-    "dotenv-webpack": "^1.5.7",
     "express": "^4.16.4",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
@@ -48,7 +47,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "yarn build:server && node build/index.js",
+    "start": "node build/index.js",
     "build": "yarn clean && npm-run-all --parallel build:*",
     "build:server": "webpack --mode production --config webpack.server.js",
     "build:client": "webpack --mode production --config webpack.client.js",
@@ -59,7 +58,8 @@
     "dev:build-client": "webpack --mode development --config webpack.client.js --watch",
     "lint": "eslint 'src/**/*.js'",
     "lint:fix": "eslint 'src/**/*.js' --fix",
-    "heroku-postbuild": "yarn build"
+    "heroku-postbuild": "yarn build",
+    "postinstall": "yarn build"
   },
   "engines": {
     "node": "10.14.0",

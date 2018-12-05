@@ -3,9 +3,9 @@ const webpack = require('webpack');
 // const Dotenv = require('dotenv-webpack');
 require('dotenv').config();
 
-console.log('PORT', process.env.PORT, process.env.RAZZLE_PORT, process.env.RAZZLE_PORT || process.env.PORT)
+console.log('PORT', process.env.PORT);
 
-console.log('REACT_APP_THEME', process.env.REACT_APP_THEME)
+console.log('REACT_APP_THEME', process.env.REACT_APP_THEME);
 
 module.exports = {
   module: {
