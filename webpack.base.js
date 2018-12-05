@@ -3,6 +3,8 @@ require('dotenv').config();
 
 console.log('PORT', process.env.PORT)
 
+console.log('REACT_APP_THEME', process.env.REACT_APP_THEME)
+
 module.exports = {
   module: {
     rules: [
