@@ -77,9 +77,9 @@ Webpack is being used to build the application
 
 * The application is production ready (HINT: try Google’s PageSpeed or Lighthouse)
 
-* ✔️ The application is deployed on AWS instead of Heroku or Now
+* The application is deployed on AWS instead of Heroku or Now
 
-    * ✔️ Enable HTTPS
+    * Enable HTTPS
 
     * Implement continuous integration
 
@@ -88,23 +88,18 @@ Webpack is being used to build the application
 * The pages are server-side rendered and are cached in the server
 
     * ✔️ User page data load before render
-    https://medium.com/@navgarcha7891/react-server-side-rendering-with-simple-redux-store-hydration-9f77ab66900a
 
     * ✔️ Troubleshoot ServerStyleSheet
-    https://medium.com/styled-components/the-simple-guide-to-server-side-rendering-react-with-styled-components-d31c6b2b8fbf
 
     * ✔️ Store Initial Store && Fix Warning: Extra attributes from the server: src,alt
 
-    * Use UNSAFE_ prefix for componentWillMount
-    https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data
+    * ✔️ Use UNSAFE_ prefix for componentWillMount
 
     * Look for alternatives for componentWillMount
 
     * Troubleshoot Webpack React Plugin
-    https://www.valentinog.com/blog/react-webpack-babel/
 
     * Cache Components
-    https://medium.com/@reactcomponentcaching/speedier-server-side-rendering-in-react-16-with-component-caching-e8aa677929b1
 
     * Refactor
 
@@ -117,9 +112,9 @@ Webpack is being used to build the application
 * All pages are SEO optimised
 The project supports code splitting for each pages
 
-    * React Helmet and SEO Meta Tags
+    * ✔️ React Helmet and SEO Meta Tags
 
-    * Webpack for code splitting
+    * Code splitting
 
 * The results list also asynchronous-ly shows the number of followers and following of each user without going the user page
 
