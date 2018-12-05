@@ -1,11 +1,10 @@
-import 'babel-polyfill';
+import '@babel/polyfill';
+import 'dotenv/config';
 import express from 'express';
 
 import renderer from './utils/renderer';
 import configureStore from './utils/store';
 import rootSaga from './client/sagas/index';
-
-require('dotenv').config();
 
 const app = express();
 
@@ -22,10 +21,6 @@ app.get('*', (req, res) => {
 
   store.close();
 });
-
-console.log(process.env.PORT);
-
-console.log(process.env.REACT_APP_THEME);
 
 app.set('PORT', process.env.PORT);
 
