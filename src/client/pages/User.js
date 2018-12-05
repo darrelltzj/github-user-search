@@ -12,6 +12,7 @@ import Loader from '../components/atoms/Loader';
 import TabToggle from '../components/atoms/TabToggle';
 import Col from '../components/layouts/Col';
 import Row from '../components/layouts/Row';
+import Head from '../components/containers/Head';
 import UserContent from '../components/containers/UserContent';
 
 const StyledUserContainer = styled.section`
@@ -26,16 +27,6 @@ class User extends Component {
     super(props);
     this.state = { selected: 'repos' };
     this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  async componentDidMount() {
-    const {
-      searchUser,
-      searchRepo,
-      match: { params: { username } = {} } = {},
-    } = this.props;
-    await searchUser({ username });
-    await searchRepo({ username, page: 1 });
   }
 
   async componentDidUpdate(prevProps) {
@@ -60,6 +51,16 @@ class User extends Component {
         await searchFollowing({ username, page: 1 });
       }
     }
+  }
+
+  UNSAFE_componentWillMount() {
+    const {
+      searchUser,
+      searchRepo,
+      match: { params: { username } = {} } = {},
+    } = this.props;
+    searchUser({ username });
+    searchRepo({ username, page: 1 });
   }
 
   handleSelect(selected) {
@@ -91,14 +92,26 @@ class User extends Component {
       followers,
       followings,
       match: { params: { username } = {} } = {},
+      location = {},
     } = this.props;
 
     const { selected } = this.state;
 
     const user = users.data[0] || {};
 
+    const { pathname = '/' } = location || {};
+
+    // console.log(user, user.login)
+
     return (
       <StyledUserContainer>
+        <Head
+          title={`Github User Search | ${user.login}`}
+          type="profile"
+          image={user.avatar_url}
+          pathname={pathname}
+          description={`Read more about Github user ${user.login}`}
+        />
         <Row>
           <Col xs={4}>
             <div style={{ padding: 20 }}>
@@ -170,6 +183,7 @@ User.propTypes = {
   searchRepo: PropTypes.func,
   searchFollowers: PropTypes.func,
   searchFollowing: PropTypes.func,
+  location: PropTypes.shape({}),
 };
 
 User.defaultProps = {
@@ -182,6 +196,7 @@ User.defaultProps = {
   searchRepo: null,
   searchFollowers: null,
   searchFollowing: null,
+  location: {},
 };
 
 function mapStateToProps(state) {

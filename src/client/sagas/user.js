@@ -21,7 +21,7 @@ function* searchUsers({ q = '', page = 1 } = {}) {
       message: 'Searching...',
     });
 
-    const res = yield axios({
+    const res = q !== undefined && q !== null && q !== '' ? yield axios({
       url: 'https://api.github.com/search/users',
       method: 'GET',
       params: {
@@ -31,7 +31,10 @@ function* searchUsers({ q = '', page = 1 } = {}) {
         page,
         per_page: 30,
       },
-    }).then(response => response.data);
+    }).then(response => response.data) : {
+      items: [],
+      total_count: 0,
+    };
 
     yield put({
       type: USERS_SEARCHED,
@@ -68,8 +71,8 @@ function* searchUser({ username } = {}) {
   }
 }
 
-function clearUsers() {
-  put({
+function* clearUsers() {
+  yield put({
     type: USERS_SEARCHED,
     data: [],
     page: 1,

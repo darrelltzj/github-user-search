@@ -21,4 +21,14 @@ function UserContent(props) {
   );
 }
 
+UserContent.propTypes = {
+  username: PropTypes.string,
+  selected: PropTypes.string,
+};
+
+UserContent.defaultProps = {
+  username: '',
+  selected: '',
+};
+
 export default UserContent;

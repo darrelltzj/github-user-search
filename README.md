@@ -27,16 +27,29 @@ git clone https://github.com/darrelltzj/github-user-search.git
 yarn
 ```
 
-4) Start the app locally using webpack-dev-server. The app should start at http://localhost:8080/
+4) Set Environment Variables. Example:
 
 ```
-yarn start
+PORT=3000
+REACT_APP_THEME=default
 ```
 
-5) Bundle app into build directory.
+5) Start the App locally on development.
+
+```
+yarn dev
+```
+
+6) Bundle app into build directories for production.
 
 ```
 yarn build
+```
+
+7) Start the App on production.
+
+```
+yarn start
 ```
 
 ## Objectives
@@ -62,13 +75,11 @@ Webpack is being used to build the application
 
 * ✔️ A documentation on how the application works and how to set up and build the project is provided
 
-    * Provide more details
-
 * The application is production ready (HINT: try Google’s PageSpeed or Lighthouse)
 
-* ✔️ The application is deployed on AWS instead of Heroku or Now
+* The application is deployed on AWS instead of Heroku or Now
 
-    * ✔️ Enable HTTPS
+    * Enable HTTPS
 
     * Implement continuous integration
 
@@ -76,12 +87,34 @@ Webpack is being used to build the application
 
 * The pages are server-side rendered and are cached in the server
 
+    * ✔️ User page data load before render
+
+    * ✔️ Troubleshoot ServerStyleSheet
+
+    * ✔️ Store Initial Store && Fix Warning: Extra attributes from the server: src,alt
+
+    * ✔️ Use UNSAFE_ prefix for componentWillMount
+
+    * Look for alternatives for componentWillMount
+
+    * Troubleshoot Webpack React Plugin
+
+    * Cache Components
+
+    * Refactor
+
+    * Redeploy (Heroku && AWS)
+
 * ✔️ All pages' URL is reusable - meaning it can be copied and pasted on different browser and still shows the same result
 
-    * Create a 404 Page
+    * 404 Page
 
 * All pages are SEO optimised
 The project supports code splitting for each pages
+
+    * ✔️ React Helmet and SEO Meta Tags
+
+    * Code splitting
 
 * The results list also asynchronous-ly shows the number of followers and following of each user without going the user page
 

@@ -42,6 +42,19 @@ function RepoContent(props) {
   );
 }
 
+RepoContent.propTypes = {
+  username: PropTypes.string,
+  repos: PropTypes.shape({}),
+  searchRepos: PropTypes.func,
+};
+
+RepoContent.defaultProps = {
+  username: '',
+  repos: {},
+  searchRepos: null,
+};
+
+
 function mapStateToProps(state) {
   const { repos } = state;
   return { repos };
