@@ -22,8 +22,6 @@ const StyledPage = styled.main`
 export default (req, store) => {
   const sheet = new ServerStyleSheet();
 
-  const helmet = Helmet.renderStatic();
-
   const content = renderToString(sheet.collectStyles(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -46,6 +44,8 @@ export default (req, store) => {
   ));
 
   const styles = sheet.getStyleTags();
+
+  const helmet = Helmet.renderStatic();
 
   return `
     <!DOCTYPE html>

@@ -101,6 +101,8 @@ class User extends Component {
 
     const { pathname = '/' } = location || {};
 
+    // console.log(user, user.login)
+
     return (
       <StyledUserContainer>
         <Head

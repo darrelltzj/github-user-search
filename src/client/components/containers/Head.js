@@ -10,6 +10,7 @@ const Head = ({
   description,
 }) => (
   <Helmet>
+    {console.log(title)}
     <title>{title}</title>
     <meta property="og: title" content={title} />
     <meta property="og:type" content={type} />

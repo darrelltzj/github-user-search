@@ -17,6 +17,8 @@ import Header from './components/containers/Header';
 import Footer from './components/containers/Footer';
 import Routes from './Routes';
 
+// import * as serviceWorker from './serviceWorker';
+
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
@@ -54,3 +56,5 @@ ReactDOM.hydrate(
   </Provider>,
   document.getElementById('root'),
 );
+
+// serviceWorker.register();
