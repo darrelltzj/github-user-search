@@ -75,8 +75,6 @@ Webpack is being used to build the application
 
 * ✔️ A documentation on how the application works and how to set up and build the project is provided
 
-    * Provide more details
-
 * The application is production ready (HINT: try Google’s PageSpeed or Lighthouse)
 
 * ✔️ The application is deployed on AWS instead of Heroku or Now
@@ -97,11 +95,13 @@ Webpack is being used to build the application
 
     * ✔️ Store Initial Store && Fix Warning: Extra attributes from the server: src,alt
 
+    * Use UNSAFE_ prefix for componentWillMount
+    https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data
+
+    * Look for alternatives for componentWillMount
+
     * Troubleshoot Webpack React Plugin
     https://www.valentinog.com/blog/react-webpack-babel/
-
-    * Update to Suspense API
-    https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data
 
     * Cache Components
     https://medium.com/@reactcomponentcaching/speedier-server-side-rendering-in-react-16-with-component-caching-e8aa677929b1
@@ -112,10 +112,14 @@ Webpack is being used to build the application
 
 * ✔️ All pages' URL is reusable - meaning it can be copied and pasted on different browser and still shows the same result
 
-    * Create a 404 Page
+    * 404 Page
 
 * All pages are SEO optimised
 The project supports code splitting for each pages
+
+    * React Helmet and SEO Meta Tags
+
+    * Webpack for code splitting
 
 * The results list also asynchronous-ly shows the number of followers and following of each user without going the user page
 

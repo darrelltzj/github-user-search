@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import styled, { ThemeProvider, ServerStyleSheet } from 'styled-components';
 import serialize from 'serialize-javascript';
+import { Helmet } from 'react-helmet';
 
 import theme from '../client/themes/index';
 import GlobalStyle from '../client/components/layouts/Global';
@@ -20,6 +21,8 @@ const StyledPage = styled.main`
 
 export default (req, store) => {
   const sheet = new ServerStyleSheet();
+
+  const helmet = Helmet.renderStatic();
 
   const content = renderToString(sheet.collectStyles(
     <Provider store={store}>
@@ -51,6 +54,8 @@ export default (req, store) => {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="theme-color" content="#000000">
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
         <link rel="shortcut icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
         <title>Github User Search</title>
         ${styles}

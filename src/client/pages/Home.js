@@ -7,6 +7,7 @@ import { searchUsersActn, clearUsersActn } from '../actions/user';
 import Loader from '../components/atoms/Loader';
 import Pagination from '../components/atoms/Pagination';
 import Row from '../components/layouts/Row';
+import Head from '../components/containers/Head';
 import HomeSearchForm from '../components/containers/HomeSearchForm';
 
 class Home extends Component {
@@ -57,13 +58,22 @@ class Home extends Component {
         page,
         total,
       } = {},
+      location = {},
     } = this.props;
+
+    const { pathname = '/' } = location || {};
 
     return (
       <Loader
         loading={loading && true}
         message={loading}
       >
+        <Head
+          title="Github User Search"
+          type="website"
+          pathname={pathname}
+          description="Search for Github Users through this App!"
+        />
         <div
           style={{
             padding: 10,
@@ -123,12 +133,14 @@ Home.propTypes = {
   users: PropTypes.shape({}),
   searchUsers: PropTypes.func,
   clearUsers: PropTypes.func,
+  location: PropTypes.shape({}),
 };
 
 Home.defaultProps = {
   users: {},
   searchUsers: null,
   clearUsers: null,
+  location: {},
 };
 
 function mapStateToProps(state) {
