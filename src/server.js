@@ -5,6 +5,8 @@ import renderer from './utils/renderer';
 import configureStore from './utils/store';
 import rootSaga from './client/sagas/index';
 
+require('dotenv').config();
+
 const app = express();
 
 app.use(express.static('public'));
@@ -20,6 +22,8 @@ app.get('*', (req, res) => {
 
   store.close();
 });
+
+console.log(process.env.PORT);
 
 app.set('PORT', process.env.PORT);
 
