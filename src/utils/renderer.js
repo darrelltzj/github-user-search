@@ -1,51 +1,31 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter, Switch } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
-import styled, { ThemeProvider, ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheet } from 'styled-components';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
 
-import theme from '../client/themes/index';
-import GlobalStyle from '../client/components/layouts/Global';
-import Header from '../client/components/containers/Header';
-import Footer from '../client/components/containers/Footer';
 import Routes from '../client/Routes';
-
-const StyledPage = styled.main`
-  display: flex;
-  flex-direction: column;
-  min-height: 96vh;
-`;
 
 export default (req, store) => {
   const sheet = new ServerStyleSheet();
 
   const content = renderToString(sheet.collectStyles(
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <React.Fragment>
-          <GlobalStyle />
-          <StaticRouter location={req.path} context={{}}>
-            <StyledPage>
-              <Header />
-
-              <Switch>
-                {renderRoutes(Routes)}
-              </Switch>
-
-              <Footer />
-            </StyledPage>
-          </StaticRouter>
-        </React.Fragment>
-      </ThemeProvider>
+      <StaticRouter
+        location={req.path}
+        context={{}}
+      >
+        {renderRoutes(Routes)}
+      </StaticRouter>
     </Provider>,
   ));
 
-  const styles = sheet.getStyleTags();
-
   const helmet = Helmet.renderStatic();
+
+  const styles = sheet.getStyleTags();
 
   return `
     <!DOCTYPE html>

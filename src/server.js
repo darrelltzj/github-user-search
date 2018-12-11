@@ -1,12 +1,24 @@
 import '@babel/polyfill';
 import 'dotenv/config';
 import express from 'express';
+// import proxy from 'express-http-proxy';
 
 import renderer from './utils/renderer';
 import configureStore from './utils/store';
 import rootSaga from './client/sagas/index';
 
 const app = express();
+
+// PROXY ???
+// app.use(
+//   '/api',
+//   proxy('https://api.github.com', {
+//     proxyReqOptDecorator(opts) {
+//       opts.headers['x-forwarded-host'] = 'localhost:3000';
+//       return opts;
+//     },
+//   })
+// );
 
 app.use(express.static('public'));
 
