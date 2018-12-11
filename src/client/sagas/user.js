@@ -1,9 +1,9 @@
-import axios from 'axios';
 import {
   put, takeEvery,
   // call
 } from 'redux-saga/effects';
 
+import api from '../utils/api';
 import {
   SEARCH_USERS,
   SEARCH_USER,
@@ -21,8 +21,8 @@ function* searchUsers({ q = '', page = 1 } = {}) {
       message: 'Searching...',
     });
 
-    const res = q !== undefined && q !== null && q !== '' ? yield axios({
-      url: 'https://api.github.com/search/users',
+    const res = q !== undefined && q !== null && q !== '' ? yield api({
+      url: '/search/users',
       method: 'GET',
       params: {
         q,
@@ -42,8 +42,11 @@ function* searchUsers({ q = '', page = 1 } = {}) {
       page,
       total: res.total_count,
     });
-  } catch (error) {
-    put({ type: USERS_FAILED, error });
+  } catch (err) {
+    yield put({
+      type: USERS_FAILED,
+      error: err.message || 'Error on Github Search API',
+    });
   }
 }
 
@@ -54,8 +57,8 @@ function* searchUser({ username } = {}) {
       message: 'Loading...',
     });
 
-    const data = yield axios({
-      url: `https://api.github.com/users/${username}`,
+    const data = yield api({
+      url: `/users/${username}`,
       method: 'GET',
     }).then(response => response.data);
 
@@ -66,8 +69,11 @@ function* searchUser({ username } = {}) {
       followers: data.followers || 0,
       followings: data.following || 0,
     });
-  } catch (error) {
-    put({ type: USERS_FAILED, error });
+  } catch (err) {
+    yield put({
+      type: USERS_FAILED,
+      error: err.message || 'Error on Github User API',
+    });
   }
 }
 

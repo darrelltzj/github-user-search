@@ -1,11 +1,11 @@
 import createAction from './utils';
 
-export const SEARCH_REPOS = 'search_repos';
+export const SEARCH_REPOS = 'SEARCH_REPOS';
 
 export function searchReposActn(payload) {
   return createAction(SEARCH_REPOS, payload);
 }
 
-export const REPOS_LOADING = 'repos_loading';
-export const REPOS_FAILED = 'repos_failed';
-export const REPOS_SEARCHED = 'repos_searched';
+export const REPOS_LOADING = 'REPOS_LOADING';
+export const REPOS_FAILED = 'REPOS_FAILED';
+export const REPOS_SEARCHED = 'REPOS_SEARCHED';

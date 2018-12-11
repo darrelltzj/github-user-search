@@ -18,5 +18,5 @@ export function clearUsersActn(payload) {
 
 export const USERS_LOADING = 'USERS_LOADING';
 export const USERS_FAILED = 'USERS_FAILED';
-export const USERS_SEARCHED = 'USERS_SEARCHed';
-export const USER_SEARCHED = 'USER_SEARCHed';
+export const USERS_SEARCHED = 'USERS_SEARCHED';
+export const USER_SEARCHED = 'USER_SEARCHED';

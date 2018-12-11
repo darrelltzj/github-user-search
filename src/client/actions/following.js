@@ -1,11 +1,11 @@
 import createAction from './utils';
 
-export const SEARCH_FOLLOWINGS = 'search_followings';
+export const SEARCH_FOLLOWINGS = 'SEARCH_FOLLOWINGS';
 
 export function searchFollowingsActn(payload) {
   return createAction(SEARCH_FOLLOWINGS, payload);
 }
 
-export const FOLLOWINGS_LOADING = 'followings_loading';
-export const FOLLOWINGS_FAILED = 'followings_failed';
-export const FOLLOWINGS_SEARCHED = 'followings_searched';
+export const FOLLOWINGS_LOADING = 'FOLLOWINGS_LOADING';
+export const FOLLOWINGS_FAILED = 'FOLLOWINGS_FAILED';
+export const FOLLOWINGS_SEARCHED = 'FOLLOWINGS_SEARCHED';

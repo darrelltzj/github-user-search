@@ -1,9 +1,9 @@
-import axios from 'axios';
 import {
   put, takeEvery,
   // call
 } from 'redux-saga/effects';
 
+import api from '../utils/api';
 import {
   SEARCH_FOLLOWINGS,
   FOLLOWINGS_LOADING,
@@ -18,8 +18,8 @@ function* searchFollowings({ username = '', page = 1 } = {}) {
       message: 'Loading Following...',
     });
 
-    const data = yield axios({
-      url: `https://api.github.com/users/${username}/following`,
+    const data = yield api({
+      url: `/users/${username}/following`,
       method: 'GET',
       params: {
         page,
@@ -32,8 +32,11 @@ function* searchFollowings({ username = '', page = 1 } = {}) {
       data,
       page,
     });
-  } catch (error) {
-    put({ type: FOLLOWINGS_FAILED, error });
+  } catch (err) {
+    yield put({
+      type: FOLLOWINGS_FAILED,
+      error: err.message || 'Error on Github User Followings API',
+    });
   }
 }
 

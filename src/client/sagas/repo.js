@@ -1,9 +1,9 @@
-import axios from 'axios';
 import {
   put, takeEvery,
   // call
 } from 'redux-saga/effects';
 
+import api from '../utils/api';
 import {
   SEARCH_REPOS,
   REPOS_LOADING,
@@ -18,8 +18,8 @@ function* searchRepos({ username = '', page = 1 } = {}) {
       message: 'Loading Repositories...',
     });
 
-    const data = yield axios({
-      url: `https://api.github.com/users/${username}/repos`,
+    const data = yield api({
+      url: `/users/${username}/repos`,
       method: 'GET',
       params: {
         page,
@@ -32,8 +32,11 @@ function* searchRepos({ username = '', page = 1 } = {}) {
       data,
       page,
     });
-  } catch (error) {
-    put({ type: REPOS_FAILED, error });
+  } catch (err) {
+    yield put({
+      type: REPOS_FAILED,
+      error: err.message || 'Error on Github User Repos API',
+    });
   }
 }
 
