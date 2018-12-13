@@ -2,6 +2,7 @@ import '@babel/polyfill';
 import 'dotenv/config';
 import express from 'express';
 // import proxy from 'express-http-proxy';
+import expressStaticGzip from 'express-static-gzip';
 
 import renderer from './utils/renderer';
 import configureStore from './utils/store';
@@ -20,7 +21,12 @@ const app = express();
 //   })
 // );
 
-app.use(express.static('public'));
+app.use(expressStaticGzip('public', {
+  enableBrotli: true,
+  orderPreference: ['br'],
+}));
+
+// app.use(express.static('public'));
 
 app.get('*', (req, res) => {
   const store = configureStore();
