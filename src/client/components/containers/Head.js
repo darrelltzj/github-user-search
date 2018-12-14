@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import serialize from 'serialize-javascript';
 
 const Head = ({
   title,
@@ -10,13 +11,13 @@ const Head = ({
   description,
 }) => (
   <Helmet>
-    <title>{title}</title>
-    <meta property="og: title" content={title} />
-    <meta property="og:type" content={type} />
-    <meta property="og:image" content={image} />
-    <meta property="og:url" content={`https://the-github-user-search.herokuapp.com${pathname}`} />
-    <meta property="og:description" content={description} />
-    <meta name="Description" content={description} />
+    <title>{serialize(title)}</title>
+    <meta property="og: title" content={serialize(title)} />
+    <meta property="og:type" content={serialize(type)} />
+    <meta property="og:image" content={serialize(image)} />
+    <meta property="og:url" content={`https://the-github-user-search.herokuapp.com${serialize(pathname)}`} />
+    <meta property="og:description" content={serialize(description)} />
+    <meta name="Description" content={serialize(description)} />
   </Helmet>
 );
 

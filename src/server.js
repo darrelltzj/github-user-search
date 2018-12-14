@@ -1,4 +1,4 @@
-import '@babel/polyfill';
+import '@babel/polyfill/noConflict';
 import 'dotenv/config';
 import express from 'express';
 // import proxy from 'express-http-proxy';
@@ -23,7 +23,7 @@ const app = express();
 
 app.use(expressStaticGzip('public', {
   enableBrotli: true,
-  orderPreference: ['br'],
+  orderPreference: ['br', 'gz'],
   index: false,
 }));
 

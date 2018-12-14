@@ -5,6 +5,7 @@ const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 const baseConfig = require('./webpack.base.js');
 
@@ -23,6 +24,7 @@ const config = {
       algorithm: 'gzip',
     }),
     new BrotliPlugin(),
+    new LoadablePlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         REACT_APP_THEME: JSON.stringify(process.env.REACT_APP_THEME),

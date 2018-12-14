@@ -7,25 +7,48 @@ import { ServerStyleSheet } from 'styled-components';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
 
+import path from 'path';
+import { ChunkExtractor } from '@loadable/server';
+
 import Routes from '../client/Routes';
 
+const statsFile = path.resolve(__dirname, '../../public/loadable-stats.json');
+
 export default (req, store) => {
+  const extractor = new ChunkExtractor({
+    statsFile,
+    entrypoints: [
+      'main',
+      // 'pages-Home',
+      // 'pages-NotFound',
+      'pages-User', // ???
+    ],
+  });
+
   const sheet = new ServerStyleSheet();
 
-  const content = renderToString(sheet.collectStyles(
-    <Provider store={store}>
-      <StaticRouter
-        location={req.path}
-        context={{}}
-      >
-        {renderRoutes(Routes)}
-      </StaticRouter>
-    </Provider>,
-  ));
+  const content = renderToString(
+    sheet.collectStyles(
+      extractor.collectChunks(
+        <Provider store={store}>
+          <StaticRouter
+            location={req.path}
+            context={{}}
+          >
+            {renderRoutes(Routes)}
+          </StaticRouter>
+        </Provider>,
+      ),
+    ),
+  );
 
   const helmet = Helmet.renderStatic();
 
+  const linkTags = extractor.getLinkTags();
+
   const styles = sheet.getStyleTags();
+
+  const scriptTags = extractor.getScriptTags();
 
   return `
     <!DOCTYPE html>
@@ -36,6 +59,7 @@ export default (req, store) => {
         <meta name="theme-color" content="#000000">
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
+        ${linkTags}
         <link rel="shortcut icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
         <title>Github User Search</title>
         ${styles}
@@ -46,8 +70,9 @@ export default (req, store) => {
         <script>
           window.INITIAL_STATE = ${serialize(store.getState())}
         </script>
-        <script src="/index.js"></script>
+        ${scriptTags}
       </body>
     </html>
   `;
+  // <script src="/index.js"></script>
 };

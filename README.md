@@ -6,7 +6,7 @@ The App can be tried out at https://the-github-user-search.herokuapp.com/
 
 The app was developed with the following engines.
 
- Node 10.13.0
+ Node 10.14.2
 
  npm 6.4.1
 
@@ -77,6 +77,8 @@ Webpack is being used to build the application
 
 * The application is production ready (HINT: try Google’s PageSpeed or Lighthouse)
 
+    * PWA
+
 * The application is deployed on AWS instead of Heroku or Now
 
     * Enable HTTPS
@@ -97,24 +99,18 @@ Webpack is being used to build the application
 
     * Look for alternatives for componentWillMount
 
-    * Troubleshoot Webpack React Plugin
-
     * Cache Components
-
-    * Refactor
-
-    * Redeploy (Heroku && AWS)
 
 * ✔️ All pages' URL is reusable - meaning it can be copied and pasted on different browser and still shows the same result
 
-    * 404 Page
+    * ✔️ 404 Page
 
 * All pages are SEO optimised
 The project supports code splitting for each pages
 
     * ✔️ React Helmet and SEO Meta Tags
 
-    * Code splitting
+    * Code splitting (Fix User page chunk bug)
 
 * The results list also asynchronous-ly shows the number of followers and following of each user without going the user page
 
@@ -127,7 +123,5 @@ The project supports code splitting for each pages
     * Update react-transition-group to version 2
 
 * ✔️ The application supports theming and can easily be switched between themes
-
-    * Refactor components
 
     * ✔️ Enable Env

@@ -23,7 +23,12 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/polyfill": "^7.0.0",
+    "@loadable/babel-plugin": "^5.2.2",
+    "@loadable/component": "^5.2.2",
+    "@loadable/server": "^5.2.2",
+    "@loadable/webpack-plugin": "^5.2.2",
     "axios": "^0.18.0",
     "babel-minify-webpack-plugin": "^0.3.1",
     "brotli-webpack-plugin": "^1.0.0",
@@ -64,7 +69,7 @@
     "heroku-postbuild": "yarn clean && yarn build"
   },
   "engines": {
-    "node": "10.14.1",
+    "node": "10.14.2",
     "npm": "6.4.1",
     "yarn": "1.12.3"
   }
