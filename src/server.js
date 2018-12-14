@@ -24,6 +24,7 @@ const app = express();
 app.use(expressStaticGzip('public', {
   enableBrotli: true,
   orderPreference: ['br'],
+  index: false,
 }));
 
 // app.use(express.static('public'));
