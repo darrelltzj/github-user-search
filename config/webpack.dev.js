@@ -1,6 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+// const MinifyPlugin = require('babel-minify-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 
 const baseConfig = require('./webpack.base.js');
@@ -14,10 +18,15 @@ const config = {
     path: path.resolve(__dirname, '../public'),
   },
   plugins: [
+    // new MinifyPlugin(),
+    new UglifyJSPlugin(),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+    }),
+    new BrotliPlugin(),
     new LoadablePlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        // PORT: JSON.stringify(process.env.PORT),
         REACT_APP_THEME: JSON.stringify(process.env.REACT_APP_THEME),
       },
     }),
