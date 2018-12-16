@@ -7,9 +7,23 @@ import App from './App';
 // import User from './pages/User';
 // import NotFound from './pages/NotFound';
 
-const Home = loadable(() => import('./pages/Home'));
-const User = loadable(() => import('./pages/User'));
-const NotFound = loadable(() => import('./pages/NotFound'));
+const Home = loadable(
+  () => import(
+    './pages/Home',
+  ),
+);
+
+const User = loadable(
+  () => import(
+    './pages/User',
+  ),
+);
+
+const NotFound = loadable(
+  () => import(
+    './pages/NotFound',
+  ),
+);
 
 const Routers = [
   {

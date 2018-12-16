@@ -1,7 +1,8 @@
+/* globals afterEach expect test */
 import '@babel/polyfill/noConflict';
 import React from 'react';
 import { render, cleanup, fireEvent } from 'react-testing-library';
-import HomeSearchForm from '../../../../src/client/components/containers/HomeSearchForm';
+import HomeSearchForm from '../HomeSearchForm';
 
 afterEach(cleanup);
 

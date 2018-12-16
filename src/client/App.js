@@ -21,9 +21,7 @@ const App = ({ route }) => (
       <GlobalStyle />
       <StyledPage>
         <Header />
-        <Switch>
-          {renderRoutes(route.routes)}
-        </Switch>
+        <Switch>{renderRoutes(route.routes)}</Switch>
         <Footer />
       </StyledPage>
     </React.Fragment>
