@@ -24,7 +24,7 @@ class HomeSearchForm extends Component {
 
   onChange(q) {
     const { handleChange } = this.props;
-    handleChange(q);
+    if (handleChange) handleChange(q);
     this.preSearch(q);
   }
 
@@ -77,6 +77,7 @@ class HomeSearchForm extends Component {
               ref={(input) => { this.searchInput = input; }}
               value={q}
               placeholder="Username"
+              data-testid="search-input"
               onChange={e => this.onChange(e.target.value)}
             />
             {items.length > 0 && (

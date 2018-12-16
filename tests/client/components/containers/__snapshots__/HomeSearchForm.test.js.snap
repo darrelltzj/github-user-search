@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomeSearchForm /> 1`] = `
+<form
+  style="position: sticky; top: 110px; z-index: 5;"
+>
+  <div
+    class="sc-bdVaJa iGupWS"
+  >
+    <div
+      class="sc-bwzfXH kmusWA"
+    >
+      <input
+        class="sc-htpNat klXrwo"
+        data-testid="search-input"
+        placeholder="Username"
+        value="a"
+      />
+    </div>
+    <div
+      class="sc-bwzfXH jGXPuV"
+    >
+      <button
+        class="sc-bxivhb hTEkWC"
+        type="submit"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</form>
+`;
